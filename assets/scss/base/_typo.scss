@@ -1,0 +1,88 @@
+/*----------------------------------------
+Global Typography
+----------------------------------------*/
+
+p{
+	margin-bottom: 1.5em;
+	margin-top: 0;
+}
+
+blockquote{
+	background: #F7F7F7;
+	border-radius: 7px;
+	font-size: 1em;
+	margin: 3.5em 10px 3.5em 0;
+	padding: 1.85em 1.5em 1.25em 1.5em;
+	margin: 2.5em auto !important;
+
+	h1,h2,h3,h4,h5,h5{
+		margin: 0 auto 1.25em auto !important;
+	}
+	p{
+		margin: 0 auto 0.75em auto !important;
+	}
+}
+
+/*----------------------------------------
+Inline Hyperlinks
+----------------------------------------*/
+
+a {
+	color: $primary;
+	text-decoration: none;
+	@include transition(color, .2s, ease-in-out);
+
+	&:hover {
+		color: darken($primary, 10%);
+	}
+
+	&:hover, &:focus {
+		outline: none;
+		text-decoration: none;
+	}
+}
+
+/*----------------------------------------
+Headers
+----------------------------------------*/
+
+h1, h2,h3,h4,h5,h6 {
+	font-family: $headfont;
+	font-weight: $hf-norm;
+	color: $black;
+	margin-top: 0;
+    line-height: 1.2;
+}
+
+
+$headings: h1 h2 h3 h4 h5 h6;
+$font-size-upper : $basefontsize * 2;
+$font-size-dec : 4px;
+@each $heading in $headings{
+	#{$heading} {
+		font-size : ($font-size-upper / $basefontsize) + em;
+	}
+	$font-size-upper : $font-size-upper - $font-size-dec;
+}
+
+/*----------------------------------------
+Lists
+----------------------------------------*/
+
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+
+	li {
+		padding-left: 1.2em;
+		text-indent: -1.2em;
+	}
+
+	li:before {
+		content: '■ ';
+		color: $primary;
+		vertical-align: middle; // prevents bottom margin
+
+	}
+}

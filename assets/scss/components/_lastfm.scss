@@ -1,0 +1,49 @@
+/*-------------
+Last FM component in footer
+--------------*/
+
+#now-playing{
+    text-align: center;
+    font-family: $headfont;
+    font-weight: $hf-bold;
+    margin: auto auto 2.5em auto;
+    max-width: 550px;
+
+    .lastfm-artwork{
+        padding: 0;
+        margin: 0 0 15px 0;
+
+        @media only screen and (max-width: 768px){
+            img{
+                transform: scale(0.7);
+            }
+        }
+    }
+
+    .lastfm-trackinfo{
+        padding: 0;
+        margin: 0;
+
+        h6{
+            margin-bottom: 0;
+            color: inherit;
+        }
+
+        p.title,
+        p.artistname{
+            margin: 0;
+        }
+
+        p.title{
+            font-size: 1.75em;
+
+            @media only screen and (max-width: 768px){
+                font-size: 1.25em;
+            }
+        }
+
+        p.artistname{
+            font-weight: $hf-norm;
+        }
+    }
+}

@@ -1,0 +1,48 @@
+body#home{
+    background-color: $palegrey;
+
+    main#home-wrap{
+        background-color: $palegrey;
+        color: $article;
+        width: 100vw;
+        height: 80vh;
+        min-height: 550px;
+        // @include transition(background-color, .75s, ease-in-out);
+        // @include transition(color, .75s, ease-in-out); // ensure this has same timings has homepage wrapper
+        // Note: for some reason targeting background-color transition separately doesn't work with vibrant.js - it
+        // did work with the footer bg color, however.
+        @include transition(all, .75s, ease-in-out);
+        @include flex-align(center, center);
+
+        @media only screen and (max-width: $medium) {
+            padding: 0 15px;
+        }
+
+        section{
+            color: inherit;
+            max-width: 550px;
+        }
+
+        section h1{
+            color: inherit;
+            font-size: 2.5em;
+        }
+
+        section p{
+            font-family: $headfont;
+            font-weight: $hf-norm;
+            font-size: 1.2em;
+        }
+
+        section a{
+            text-decoration: underline;
+            color: $article; // match the link color to the text to make the vibrant.js transition less jarring
+            @include transition(all, .25s, ease-in-out);
+
+            &:hover{
+                text-decoration: none;
+            }
+        }
+    }
+
+}

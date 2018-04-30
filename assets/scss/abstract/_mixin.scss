@@ -1,0 +1,52 @@
+
+@mixin flex-align($align, $justify){
+    @content;
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+}
+
+@mixin transition($transition-property, $transition-time, $method) {
+    -webkit-transition: $transition-property $transition-time $method;
+    -moz-transition: $transition-property $transition-time $method;
+    -ms-transition: $transition-property $transition-time $method;
+    -o-transition: $transition-property $transition-time $method;
+    transition: $transition-property $transition-time $method;
+}
+
+@mixin link-underline($linkColor){
+	@content;
+	transition: color 0.4s;
+	position: relative;
+
+	&:before{
+		background: $linkColor;
+		transition-delay: 0.4s;
+	}
+
+	&:after{
+		background: transparent;
+	}
+
+	&:before, &:after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 1px;
+		transform: translate3d(0, 0, 0); // use gpu acceleration
+		transform: scale3d(0, 1, 1);
+		transform-origin: center left;
+		transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+	}
+
+	&:hover{
+		color: $linkColor;
+
+		&:before{
+			transform: scale3d(1, 1, 1);
+			transition-delay: 0s;
+		}
+	}
+}

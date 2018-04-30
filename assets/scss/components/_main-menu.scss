@@ -1,0 +1,31 @@
+nav#main-menu{
+    margin-bottom: 2.75em;
+
+    ul#menu-main-menu{
+        @include flex-align(center, center);
+        flex-direction: row;
+        flex-wrap: nowrap;
+        list-style: none;
+        padding-left: 0;
+        font-family: $headfont;
+        font-weight: $hf-norm;
+    }
+
+    ul#menu-main-menu li{
+        padding: 15px;
+        font-size: 1em;
+        text-indent: 0;
+        // padding: 0;
+        padding: 15px;
+
+        &:before{
+            display: none;
+        }
+
+        a{
+            // padding: 15px;
+            @include link-underline($primary);
+        }
+    }
+
+}

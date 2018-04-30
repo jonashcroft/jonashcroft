@@ -1,0 +1,13 @@
+# Keep these files out of the repo
+node_modules
+dist
+app/public/wp-content/themes/twenty*
+logs/*/*.log
+*.sql
+
+# Hidden files
+*.DS_Store
+*Thumbs.db
+*.sass-cache*
+*~imageoptim*
+*.map

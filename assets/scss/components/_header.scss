@@ -1,0 +1,17 @@
+/*-------------
+Main website header
+--------------*/
+
+header#main{
+    margin: 5.5em auto 2.5em auto;
+    max-width: 900px;
+    @include flex-align(center, center);
+    text-align: center;
+
+    b{
+        font-size: 1.85em;
+        font-family: $headfont;
+        font-weight: $hf-norm;
+        @include link-underline($primary);
+    }
+}

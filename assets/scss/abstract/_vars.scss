@@ -1,0 +1,43 @@
+/*------------------------------------------
+Variables
+-------------------------------------------*/
+
+/*----------------------------------------
+Colours
+----------------------------------------*/
+
+$primary: #E84D5B;
+$white: #ffffff;
+$black: #14233C;
+$article: #3D4C62;
+$lightgrey: #bbadb4;
+$palegrey: #F4F4F4;
+
+/*----------------------------------------
+Typography
+----------------------------------------*/
+
+$basefontsize: 18px;
+
+// Body Font
+$bodyfont: 'Roboto';
+$bf-bold: 500;
+$bf-norm: 400;
+
+// Header Fonts
+$headfont: 'Nunito';
+$hf-bold: 900;
+$hf-norm: 700;
+
+/*----------------------------------------
+Media Queries
+
+Usage: @media only screen and (max-width: $large) { ... }
+----------------------------------------*/
+
+$large: 1200px;
+$medium: 992px;
+$tablet: 768px;
+$phablet: 550px;
+$mobile: 480px;
+$extramsall: 380px;

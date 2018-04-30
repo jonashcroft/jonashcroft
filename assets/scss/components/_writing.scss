@@ -1,0 +1,36 @@
+/*-------------
+Front Page, aka main post stream
+--------------*/
+
+body#writing,
+body#archive,
+body#tags{
+
+    main article{
+        max-width: 650px;
+        position: relative;
+        margin-bottom: 3.5em;
+
+        h2{
+            margin-bottom: 10px;
+            font-size: 1.75em;
+
+            @media only screen and (max-width: 992px){
+                font-size: 1.45em;
+            }
+        }
+
+        span.date{
+            color: darken($lightgrey, 20%);
+            font-weight: $bf-bold;
+            font-size: 0.8em;
+            // margin: 10px 0;
+        }
+
+        p{
+            margin-top: 10px;
+            font-size: 0.85em;
+        }
+    }
+
+}
