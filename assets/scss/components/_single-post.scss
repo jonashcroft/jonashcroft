@@ -80,7 +80,7 @@ section#featured-image{
 }
 
 article#single{
-    max-width: 800px;
+    max-width: 100%;
     position: relative;
 
     a{
@@ -95,6 +95,7 @@ article#single{
     h6{
         margin: 1.9em auto 1.25em;
         max-width: 650px;
+        position: relative;
     }
 
     p,
@@ -109,29 +110,45 @@ article#single{
     video{
         max-width: 650px;
         margin: 0 auto 1.5em auto;
+        position: relative;
     }
 
     code[class*=language-],
     pre[class*=language-],
-    .cp_embed_wrapper{
+    .cp_embed_wrapper,
+    .code-toolbar{
         max-width: 100%;
         font-size: 0.9em;
         margin: 3.5em auto;
+        position: relative;
     }
 
     pre[class*=language-]{
         padding: 20px;
     }
 
+    code:not([class*='language-']){
+        padding: 2px 4px;
+        border: 0;
+        font-family: Menlo,Roboto Mono,Courier New,monospace;
+        font-size: 0.8em;
+        font-weight: 400;
+        color: #222;
+        border-radius: 0;
+        background: $palegrey;
+    }
+
     figure{
-        max-width: 100%;
-        position: relative;
+        max-width: 100% !important;
+        width: auto !important; // override WordPress
         height: auto;
         margin: 2.45em auto;
+        text-align: center;
 
         > img{
-            margin: 0;
-            max-width: 100%;
+            margin: 0 auto;
+            max-width: 100% !important;
+            width: auto !important; // override WordPress
             height: auto;
         }
 
@@ -140,6 +157,7 @@ article#single{
             font-size: 0.8em;
             font-weight: $bf-bold;
             text-align: center;
+            width: 100%;
         }
     }
 
@@ -150,11 +168,16 @@ article#single{
 }
 
 section#comments{
-    max-width: 800px;
+    width: 750px;
     position: relative;
     margin: 1.5em auto 2.75em auto;
 
-    .disqus_thread{
-        background: red;
+    @media only screen and (max-width: 768px){
+        width: 540px;
     }
+
+    @media only screen and (max-width: 550px){
+        width: 350px;
+    }
+
 }
