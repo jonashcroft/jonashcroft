@@ -2,55 +2,62 @@ import * as Vibrant from 'node-vibrant';
 
 const getArtWorkColours = () => {
 
-    const img = document.getElementById('albumart').src
+    const img          = document.getElementById('albumart').src,
+          homeBody     = document.getElementById('home'),
+          homeMain     = document.getElementById('home-wrap'),
+          footerDiv    = document.getElementById('footer');
 
     // There *does* exist a fallback image in the serverside function, but just in case:
     if ( img != '' ) {
 
         Vibrant.from(img).getSwatches((err, swatches) => {
 
-            // Loop through all the found colors
+            /*-------------
+            Loop through all found colours from Vibrant, sometimes Vibrant
+            will return 'null' for a swatch, so push the populated ones to
+            an array and we'll use a random one.
+            --------------*/
+
+            let ourColours = [];
+
             for ( let key in swatches ) {
-                if ( swatches.hasOwnProperty(key) ) {
 
-                    // Grab the 'main' colour only, because it's pretty
-                    if ( key == 'Vibrant' ) {
+                if ( swatches.hasOwnProperty(key) && (swatches[key]) != null ) {
 
-                        // Alllll the variables...
-                        const homeBody     = document.getElementById('home'),
-                              homeMain     = document.getElementById('home-wrap'),
-                              footerDiv    = document.getElementById('footer'),
-                              newBgColor   = (swatches[key]).getHex(),
-                              newTextColor = (swatches[key]).getTitleTextColor();
-
-                        if ( homeBody != null ) {
-
-                            homeMain.style.backgroundColor = newBgColor,
-                            homeMain.style.color           = newTextColor;
-
-                            // Loop through all of the links in
-                            const homeLinks = homeMain.querySelectorAll('a'),
-                                   callback = (el) => {
-                                        el.style.color = newTextColor;
-                                    };
-
-                            for ( var homeLink of homeLinks ) callback(homeLink);
-
-                        }
-
-                        footerDiv.style.backgroundColor = newBgColor;
-                        footerDiv.style.color           = newTextColor;
-
-                        const footerLinks = footerDiv.querySelectorAll('a'),
-                            callback = (el) => {
-                                 el.style.color = newTextColor;
-                            };
-
-                        for ( var footerLink of footerLinks ) callback(footerLink);
-
-                    }
+                    ourColours.push( {
+                        color: (swatches[key]).getHex(),
+                        text: (swatches[key]).getTitleTextColor()
+                    } );
 
                 }
+
+                let randomColor = ourColours[Math.floor(Math.random()*ourColours.length)];
+
+                if ( homeBody != null ) {
+
+                    homeMain.style.backgroundColor = randomColor.color,
+                    homeMain.style.color           = randomColor.text;
+
+                    // Loop through all of the links in
+                    const homeLinks = homeMain.querySelectorAll('a'),
+                           callback = (el) => {
+                                el.style.color = randomColor.text;
+                            };
+
+                    for ( var homeLink of homeLinks ) callback(homeLink);
+
+                }
+
+                footerDiv.style.backgroundColor = randomColor.color;
+                footerDiv.style.color           = randomColor.text;
+
+                const footerLinks = footerDiv.querySelectorAll('a'),
+                    callback = (el) => {
+                         el.style.color = randomColor.text;
+                    };
+
+                for ( var footerLink of footerLinks ) callback(footerLink);
+
             }
         });
 
