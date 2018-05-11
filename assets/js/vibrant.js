@@ -17,7 +17,6 @@ const getArtWorkColours = () => {
             will return 'null' for a swatch, so push the populated ones to
             an array and we'll use a random one.
             --------------*/
-
             let ourColours = [];
 
             for ( let key in swatches ) {
@@ -31,34 +30,35 @@ const getArtWorkColours = () => {
 
                 }
 
-                let randomColor = ourColours[Math.floor(Math.random()*ourColours.length)];
+            }
 
-                if ( homeBody != null ) {
+            let randomColor = ourColours[Math.floor(Math.random() * ourColours.length)];
 
-                    homeMain.style.backgroundColor = randomColor.color,
-                    homeMain.style.color           = randomColor.text;
+            if ( homeBody != null ) {
 
-                    // Loop through all of the links in
-                    const homeLinks = homeMain.querySelectorAll('a'),
-                           callback = (el) => {
-                                el.style.color = randomColor.text;
-                            };
+                homeMain.style.backgroundColor = randomColor.color,
+                homeMain.style.color           = randomColor.text;
 
-                    for ( var homeLink of homeLinks ) callback(homeLink);
+                // Loop through all of the links in
+                const homeLinks = homeMain.querySelectorAll('a'),
+                       callback = (el) => {
+                            el.style.color = randomColor.text;
+                        };
 
-                }
-
-                footerDiv.style.backgroundColor = randomColor.color;
-                footerDiv.style.color           = randomColor.text;
-
-                const footerLinks = footerDiv.querySelectorAll('a'),
-                    callback = (el) => {
-                         el.style.color = randomColor.text;
-                    };
-
-                for ( var footerLink of footerLinks ) callback(footerLink);
+                for ( var homeLink of homeLinks ) callback(homeLink);
 
             }
+
+            footerDiv.style.backgroundColor = randomColor.color;
+            footerDiv.style.color           = randomColor.text;
+
+            const footerLinks = footerDiv.querySelectorAll('a'),
+                callback = (el) => {
+                     el.style.color = randomColor.text;
+                };
+
+            for ( var footerLink of footerLinks ) callback(footerLink);
+
         });
 
     }
