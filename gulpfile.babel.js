@@ -47,7 +47,7 @@ gulp.task('browserify', () => {
     .pipe(gulp.dest('./assets/'));
 });
 
-gulp.task("bundle", ['browserify'], () => {
+gulp.task('bundle', ['browserify'], () => {
     return gulp.src([
         './assets/app.js',
         './assets/js/vendor/*.js'

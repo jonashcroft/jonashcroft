@@ -4,8 +4,8 @@
 <?php
     global $post; // required
     $args = [
-            'post_type'    => 'post',
-            'numberposts'  => -1
+            // 'post_type'    => 'post',
+            // 'numberposts'  => -1
             ];
     $allPosts = get_posts($args);
 

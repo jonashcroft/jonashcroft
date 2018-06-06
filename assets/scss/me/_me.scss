@@ -1,0 +1,266 @@
+/*-------------
+'Me' Page
+--------------*/
+
+@font-face {
+    font-family: 'VCR OSD Mono';
+    font-style: normal;
+    font-weight: normal;
+    src: local('VCR OSD Mono'), url('../font/VCR_OSD_MONO.woff') format('woff');
+}
+
+/*-------------
+Body
+--------------*/
+
+body#page-me{
+    color: $white;
+    font-family: 'VCR OSD Mono';
+    text-transform: uppercase;
+    font-size: 46px;
+    font-kerning: normal;
+    line-height: 1.5;
+    @include flex-align(center, center);
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: 2px;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+    @include transition(font-size, .3s, ease-in-out);
+    animation: turn-on 4s linear;
+    animation-fill-mode:forwards;
+
+	@media only screen and (max-width: $medium) {
+        font-size: 36px;
+    }
+
+	@media only screen and (max-width: $tablet) {
+		font-size: 24px;
+	}
+
+	@media only screen and (max-width: $mobile) {
+        line-height: 1.6;
+        font-size: 18px;
+    }
+
+    *{
+        -webkit-overflow-scrolling: touch;
+
+        &::selection {
+            background: $highlight;
+        }
+
+        // Apply a nice CRT style gaussian blur..
+        @media only screen and (min-width: ($tablet+1) ) {
+            filter: blur(0.45px);
+        }
+
+    }
+
+    a{
+        color: $white;
+        @include atrifacts();
+        @include transition(all, .3s, ease-in-out);
+        @include highlight();
+    }
+
+    h1,h2,h3,h4,h5,h6{
+        font-family: 'VCR OSD Mono';
+        color: $white;
+        font-size: 1em;
+        display: inline-block;
+        padding: 0.1em;
+        z-index: 1;
+        @include atrifacts();
+    }
+
+    /*-------------
+    Overlay div that displays 'channel name'
+    --------------*/
+    div#init{
+        position: absolute;
+        top: 0; left: 0; bottom: 0; right: 0;
+        z-index: 999;
+        padding: 0.75em;
+        color: #00ff00;
+        visibility: hidden;
+        pointer-events: none;
+        animation: channel 6s linear;
+        animation-fill-mode: forwards;
+        pointer-events: none;
+    }
+
+    /*-------------
+    Content wrapper
+    --------------*/
+    div#wrap{
+        width: 80%;
+        height: 90%;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        @include transition(height, .3s, ease-in-out);
+
+	    @media only screen and (max-width: $tablet) {
+            width: 90%;
+        }
+    }
+
+    /*-------------
+    Base Template
+    --------------*/
+
+    header#me-lead{
+        text-align: center;
+        margin-bottom: 0.75em;
+    }
+
+    main#me-main{
+        position: relative;
+
+        ul{
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li{
+            padding-left: 0;
+            text-indent: 0;
+            line-height: 1;
+            margin: 0.25em 0 0.45em 0;
+            padding: 0;
+            cursor: pointer;
+            z-index: 1;
+            @include transition(all, .3s, ease-in-out);
+            @include atrifacts();
+            @include highlight();
+
+            // artifacts() overrides the psuedo content with text, so override for mobile
+        	@media only screen and (max-width: $tablet ) {
+                &:before{
+                    content: '';
+                }
+            }
+        }
+    }
+
+    footer#me-footer{
+        margin-top: 1.15em;
+
+        p{
+            @include atrifacts();
+            margin-bottom: 0;
+        }
+    }
+
+    /*-------------
+    Pop out divs
+    --------------*/
+
+    section.popup-wrap{
+
+        $popMargin: -5px;
+
+        position: absolute;
+        top: $popMargin; left: $popMargin; right: $popMargin; bottom: $popMargin;
+        background: $blue;
+        z-index: 5;
+        @include flex-align(center, space-between);
+        flex-direction: column;
+        visibility: hidden;
+        opacity: 0;
+
+        &.active{
+            visibility: visible;
+            opacity: 1;
+        }
+
+        header.pop-head{
+            margin-bottom: 0.75em;
+
+	        @media only screen and (max-width: $tablet) {
+                margin-bottom: 1.5em;
+            }
+
+            h2{
+                margin-bottom: 0;
+            }
+        }
+
+        main.pop-main{
+            font-size: 0.5em;
+            overflow-y: scroll;
+
+            @media only screen and (max-width: $tablet) {
+                font-size: 0.8em;
+            }
+
+            section.role{
+                margin-bottom: 2.25em;
+            }
+        }
+
+        footer.pop-foot{
+            @include flex-align(center, flex-end);
+            margin-top: 0.75em;
+
+            @media only screen and (max-width: $tablet) {
+                margin-top: 1.5em;
+            }
+        }
+
+    /*-------------
+    Misc
+    --------------*/
+
+        h3{
+            font-size: 1.5em;
+            margin: 0.85em 0;
+        }
+
+        ul.grid{
+            column-count: 2;
+            column-gap: 2.25em;
+
+	        @media only screen and (max-width: $phablet) {
+                column-count: 1;
+            }
+
+            @media only screen and (max-width: $mobile) {
+                column-gap: 1.5em;
+            }
+
+            li{
+                width: 100%;
+                margin-bottom: 1.75em;
+                padding-left: 1.2em;
+                text-indent: -0.8em;
+                line-height: 1.2;
+                height: 2.4em;
+                display: inline-block; // prevent column breaking
+
+                @media only screen and (max-width: $tablet) {
+                    height: 3.8em;
+                }
+
+	            @media only screen and (max-width: $phablet) {
+                    margin-bottom: 1.05em;
+                    height: auto;
+                }
+            }
+
+            li:before{
+                content: '\002A ';
+                color: $white;
+                font-size: 1.2em;
+                position: relative;
+                left: -3px;
+            }
+        }
+    }
+}

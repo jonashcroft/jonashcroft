@@ -1,0 +1,133 @@
+/*-------------
+Vars
+--------------*/
+
+$blue: #4938EC;
+$highlight: #EA3EE3;
+$white: #FFEFFF;
+
+/*-------------
+Utils
+--------------*/
+
+@keyframes glitch-anim {
+    $steps: 10;
+
+    @for $i from 0 through $steps {
+        #{ percentage( $i * ( 1/$steps ) ) } {
+            clip: rect( random(100)+px, 9999px, random(100)+px, 0 );
+        }
+    }
+}
+
+/*-------------
+'Turn On' animation - distorts the screen
+in a CRT kind of way.
+--------------*/
+
+@keyframes turn-on{
+    0%{
+        transform:scale(1,0.8) translate3d(0,0,0);
+        filter: brightness(30);
+        opacity: 1;
+        background: black;
+
+    }
+    3.5%{
+        transform:scale(1,0.8) translate3d(0,100%,0);
+    }
+
+    3.6%{
+        transform:scale(1,0.8) translate3d(0,-100%,0);
+        opacity:1;
+    }
+
+    9%{
+        transform:scale(1.3,0.6) translate3d(0,100%,0);
+        filter:brightness(30);
+        opacity:0;
+    }
+
+    11%{
+        transform:scale(1,1) translate3d(0,0,0);
+        filter:contrast(0) brightness(0);
+        opacity:0;
+    }
+
+    55%{
+        background: $blue;
+    }
+
+    100%{
+        transform:scale(1,1) translate3d(0,0,0);
+        background: $blue;
+        opacity:1;
+    }
+}
+
+/*-------------
+Animate in/out the 'AV-1'
+--------------*/
+
+@keyframes channel{
+    0%{
+        visibility:hidden;
+    }
+    20%{
+        visibility:hidden;
+    }
+    21%{
+        visibility:visible;
+    }
+    100%{
+        visibility:hidden;
+    }
+}
+
+/*-------------
+Text Artifacts effect - requires element to have
+data-text attr matching the text.
+
+Disabled on mobile due to looking terrible
+--------------*/
+@mixin atrifacts(){
+    position: relative;
+    @content;
+
+	@media only screen and (min-width: ($tablet+1) ) {
+        &:before,
+        &:after{
+            position: absolute;
+            content: attr(data-text);
+            font-size: 1em;
+            opacity: 0.9;
+            animation: glitch-anim 2s infinite linear alternate-reverse;
+        }
+
+        &:before{
+            top: 2px; left: 2px;
+            color: rgba($white, 0.6);
+            z-index: -1;
+        }
+
+        &:after{
+            top: -2px; left: -1px;
+            color: rgba($highlight, 0.2);
+            z-index: 0;
+        }
+    }
+}
+
+/*-------------
+Purple background on text/link hover
+--------------*/
+
+@mixin highlight(){
+    @content;
+
+    &:hover, &:focus{
+        background: $highlight;
+        color: $white;
+        transform: translatex(5px);
+    }
+}

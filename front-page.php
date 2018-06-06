@@ -4,7 +4,7 @@
 
     <section>
         <h1>Jon Ashcroft</h1>
-        <p>Hi! I'm a professional web developer and all-around enthusiast based in Birmingham, UK. I occasionally <a href="<?php echo home_url('writing'); ?>">write about things</a> and you can see <a href="<?php echo home_url('now'); ?>">what I'm up to</a> here.</p>
+        <p>Hi! I'm a professional web developer and all-around enthusiast based in Birmingham, UK. I occasionally <a href="<?php echo home_url('writing'); ?>">write about things</a> and you can see <a href="<?php echo home_url('me'); ?>">learn about me</a> here.</p>
     </section>
 
 </main>

@@ -11,5 +11,12 @@ if you want to take a look:
 https://github.com/jonashcroft/jonashcroft`
 );
 
+console.log(
+`
+Interested in finding out more about my work?
+
+https://jonashcroft.co.uk/me`
+)
+
 };
 export default showConsoleMessage;

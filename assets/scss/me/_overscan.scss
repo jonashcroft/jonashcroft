@@ -1,0 +1,60 @@
+    $scan-width: 1px;
+    $scan-color: rgba(#000, .45);
+    $scan-z-index: 2;
+    // $scan-z-index: 2147483648;
+
+    // apply CRT animation
+    @mixin scan-crt() {
+        animation: scanlines 1s steps(30) infinite;
+    }
+
+    // apply CRT animation:
+    @mixin scan-moving() {
+        animation: scanline 6s linear infinite;
+    }
+
+	@media only screen and (min-width: ($tablet+1) ) {
+
+        .scanlines {
+            position: relative;
+            overflow: hidden; // only to animate the unique scanline
+
+            &:before,
+            &:after {
+                display: block;
+                pointer-events: none;
+                content: '';
+                position: absolute;
+            }
+
+            &:before {
+                width: 100%;
+                height: $scan-width * 1;
+                z-index: $scan-z-index + 1;
+                background: $scan-color;
+                opacity: 0.25; // Scan line opacity
+                @include scan-moving();
+            }
+
+            &:after {
+                top: 0; right: 0; bottom: 0; left: 0;
+                z-index: $scan-z-index;
+                background: linear-gradient( to bottom, transparent 50%, $scan-color 51% );
+                background-size: 100% $scan-width * 2;
+                @include scan-crt();
+            }
+        }
+
+    }
+
+    @keyframes scanline {
+        0% {
+            transform: translate3d(0,200000%,0);
+        }
+    }
+
+    @keyframes scanlines {
+        0% {
+            background-position: 0 50%;
+        }
+    }

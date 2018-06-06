@@ -1,6 +1,7 @@
 /* Our functions */
 import getArtWorkColours from './vibrant.js';
 import showConsoleMessage from './showConsoleMessage.js';
+import { meOpenContent, meCloseModal } from './me.js';
 
 class jon {
 
@@ -14,6 +15,7 @@ class jon {
         // General functions
         showConsoleMessage();
         getArtWorkColours();
+        meOpenContent();
 
 	}
 

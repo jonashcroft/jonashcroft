@@ -2,64 +2,68 @@ import * as Vibrant from 'node-vibrant';
 
 const getArtWorkColours = () => {
 
-    const img          = document.getElementById('albumart').src,
-          homeBody     = document.getElementById('home'),
-          homeMain     = document.getElementById('home-wrap'),
-          footerDiv    = document.getElementById('footer');
+    if ( ! document.querySelector('#page-me') ) {
 
-    // There *does* exist a fallback image in the serverside function, but just in case:
-    if ( img != '' ) {
+        const img        = document.getElementById('albumart').src,
+            homeBody     = document.getElementById('home'),
+            homeMain     = document.getElementById('home-wrap'),
+            footerDiv    = document.getElementById('footer');
 
-        Vibrant.from(img).getSwatches((err, swatches) => {
+        //There *does* exist a fallback image in the serverside function, but just in case:
+        if ( img != '' ) {
 
-            /*-------------
-            Loop through all found colours from Vibrant, sometimes Vibrant
-            will return 'null' for a swatch, so push the populated ones to
-            an array and we'll use a random one.
-            --------------*/
-            let ourColours = [];
+            Vibrant.from(img).getSwatches((err, swatches) => {
 
-            for ( let key in swatches ) {
+                /*-------------
+                Loop through all found colours from Vibrant, sometimes Vibrant
+                will return 'null' for a swatch, so push the populated ones to
+                an array and we'll use a random one.
+                --------------*/
+                let ourColours = [];
 
-                if ( swatches.hasOwnProperty(key) && (swatches[key]) != null ) {
+                for ( let key in swatches ) {
 
-                    ourColours.push( {
-                        color: (swatches[key]).getHex(),
-                        text: (swatches[key]).getTitleTextColor()
-                    } );
+                    if ( swatches.hasOwnProperty(key) && (swatches[key]) != null ) {
+
+                        ourColours.push( {
+                            color: (swatches[key]).getHex(),
+                            text: (swatches[key]).getTitleTextColor()
+                        } );
+
+                    }
 
                 }
 
-            }
+                let randomColor = ourColours[Math.floor(Math.random() * ourColours.length)];
 
-            let randomColor = ourColours[Math.floor(Math.random() * ourColours.length)];
+                if ( homeBody != null ) {
 
-            if ( homeBody != null ) {
+                    homeMain.style.backgroundColor = randomColor.color,
+                    homeMain.style.color           = randomColor.text;
 
-                homeMain.style.backgroundColor = randomColor.color,
-                homeMain.style.color           = randomColor.text;
+                    // Loop through all of the links in
+                    const homeLinks = homeMain.querySelectorAll('a'),
+                        callback = (el) => {
+                                el.style.color = randomColor.text;
+                            };
 
-                // Loop through all of the links in
-                const homeLinks = homeMain.querySelectorAll('a'),
-                       callback = (el) => {
-                            el.style.color = randomColor.text;
-                        };
+                    for ( var homeLink of homeLinks ) callback(homeLink);
 
-                for ( var homeLink of homeLinks ) callback(homeLink);
+                }
 
-            }
+                footerDiv.style.backgroundColor = randomColor.color;
+                footerDiv.style.color           = randomColor.text;
 
-            footerDiv.style.backgroundColor = randomColor.color;
-            footerDiv.style.color           = randomColor.text;
+                const footerLinks = footerDiv.querySelectorAll('a'),
+                    callback = (el) => {
+                        el.style.color = randomColor.text;
+                    };
 
-            const footerLinks = footerDiv.querySelectorAll('a'),
-                callback = (el) => {
-                     el.style.color = randomColor.text;
-                };
+                for ( var footerLink of footerLinks ) callback(footerLink);
 
-            for ( var footerLink of footerLinks ) callback(footerLink);
+            });
 
-        });
+        }
 
     }
 
