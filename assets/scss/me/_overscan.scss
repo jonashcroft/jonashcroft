@@ -1,7 +1,7 @@
     $scan-width: 1px;
     $scan-color: rgba(#000, .45);
-    $scan-z-index: 2;
-    // $scan-z-index: 2147483648;
+    // $scan-z-index: ;
+    $scan-z-index: 2147483648;
 
     // apply CRT animation
     @mixin scan-crt() {
