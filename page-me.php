@@ -29,7 +29,7 @@
             <h2 data-text="About me">About me</h2>
         </header>
         <main class="pop-main">
-            <p>Hey! I'm a web developer living &amp; working in Birmingham City Centre. The world of technology has been fascinating to me, so I feel very lucky to be able to contribute to it.</p>
+            <p>Hey! I'm a web developer living &amp; working in Birmingham City Centre. The world of technology has always been fascinating to me, so I feel very lucky to be able to contribute to it.</p>
 
             <p>I consider myself a creative &amp; curious person: Whether it’s finding new music, discovering great places to eat, taking photos, manipulating API data, learning something new – I'm always eager to try.</p>
 
