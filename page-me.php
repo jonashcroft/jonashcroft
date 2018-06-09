@@ -77,6 +77,7 @@
                 <li>Google Maps</li>
                 <li>Google Places</li>
                 <li>BigChange Apps</li>
+                <li>TrustPilot</li>
                 <li>MailChimp</li>
                 <li>Amazon Web Services</li>
                 <li>Amazon Seller Central</li>
