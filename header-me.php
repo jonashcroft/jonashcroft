@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#E84D5B;">
+<meta name="theme-color" content="#4938EC">
 <?php wp_head(); ?>
 
 <link rel="apple-touch-icon" sizes="152x152" href="<?php echo home_url(); ?>/apple-touch-icon.png">
