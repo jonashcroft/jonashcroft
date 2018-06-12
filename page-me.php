@@ -48,7 +48,7 @@
             <h2 data-text="What can I do?">What can I do?</h2>
         </header>
         <main class="pop-main">
-            <p>My core skills revolve around bespoke WordPress development. I find API's genuinely exciting and component based functions satisfying. Refactoring code is really relaxing and CSS3 animations are fun.</p>
+            <p>My core skills revolve around bespoke WordPress development. I find API's genuinely exciting and component based development satisfying. Optimising code is relaxing and CSS3 animations are fun.</p>
 
             <p>I love experimenting and hate saying "that's not possible" without trying first.</p>
 
