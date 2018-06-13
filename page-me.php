@@ -82,6 +82,7 @@
                 <li>Amazon Web Services</li>
                 <li>Amazon Seller Central</li>
                 <li>Salesforce</li>
+                <li>eTapestry</li>
                 <li>Lumesse</li>
                 <li>Spotify</li>
                 <li>YouTube &plus; Vimeo</li>
