@@ -74,6 +74,7 @@
             <ul class="grid">
                 <li>OAuth Flow</li>
                 <li>REST &plus; SOAP</li>
+                <li>Stripe</li>
                 <li>Google Maps</li>
                 <li>Google Places</li>
                 <li>BigChange Apps</li>
