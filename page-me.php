@@ -10,10 +10,10 @@
 
     <main id="me-main">
         <ul id="menu">
-            <li data-title="about" data-text="About me" class="btn">About Me</li>
-            <li data-title="expertise" data-text="What can I do?" class="btn">What can I do?</li>
-            <li data-title="experience" data-text="Experience" class="btn">Experience</li>
-            <li data-title="contact" data-text="Talk to me" class="btn">Talk to me</li>
+            <li data-title="about" data-text="About me" class="btn" data-menu-btn>About Me</li>
+            <li data-title="expertise" data-text="What can I do?" class="btn" data-menu-btn>What can I do?</li>
+            <li data-title="experience" data-text="Experience" class="btn" data-menu-btn>Experience</li>
+            <li data-title="contact" data-text="Talk to me" class="btn" data-menu-btn>Talk to me</li>
         </ul>
     </main>
 
@@ -33,10 +33,10 @@
 
             <p>I consider myself a creative &amp; curious person: Whether it’s finding new music, discovering great places to eat, taking photos, manipulating API data, learning something new – I'm always eager to try.</p>
 
-            <p>I'm currently working full-time at Sixth Story.</p>
+            <p>I'm currently working full-time at Eastside Co.</p>
         </main>
         <footer class="pop-foot">
-            <a href="#" data-text="Back" class="close-modal">Back</a></li>
+            <a href="#" data-text="Back" class="close-modal" data-close-modal>Back</a></li>
         </footer>
     </section>
 
@@ -56,20 +56,22 @@
 
             <ul class="grid">
                 <li>HTML &plus; JS &plus; SCSS</li>
-                <li>jQuery &plus; ES6</li>
-                <li>PHP</li>
-                <li>NPM &plus; Gulp Config</li>
+                <li>ES6+, Vanilla, jQuery</li>
+                <li>Component/DRY based development</li>
+                <li>Bespoke Shopify development</li>
+                <li>Solid Communication skills</li>
+                <li>Liquid Templating System</li>
+                <li>WordPress-based PHP</li>
+                <li>Project Planning &plus; Management</li>
+                <li>Bespoke WordPress Templating</li>
                 <li>Server config (inc. Vagrant)</li>
+                <li>npm, webpack, gulp etc.</li>
                 <li>Advanced Sass Functions</li>
                 <li>Building for Speed &plus; SEO</li>
                 <li>Code Optimisation</li>
-                <li>A&plus; Client Communication</li>
-                <li>Component/DRY based development</li>
-                <li>Project Planning &plus; Management</li>
-                <li>Bespoke WordPress Templating</li>
             </ul>
 
-            <h3>API Experience:</h3>
+            <h3>Some API Experience:</h3>
 
             <ul class="grid">
                 <li>OAuth Flow</li>
@@ -105,8 +107,14 @@
         </header>
         <main class="pop-main">
 
+        <section class="role">
+                <h3>Front End Web Developer / Eastside Co:<br>'18 - Now</h3>
+
+                <p>I'm currently one of the leading bespoke Shopify development agencies, trusted with some of the companies more complex builds and highest stake clients.</p>
+            </section>
+
             <section class="role">
-                <h3>Web Developer / Sixth Story:<br>'16 - Now</h3>
+                <h3>Web Developer / Sixth Story:<br>'16 - '18</h3>
 
                 <p>I'm trusted to take our designers amazing work from Sketch and turn them into a high quality, functional reality in a timely manner for our clients. In my time here, I've also optimised our custom Starter Template and Developer Standards &plus; Processes to ensure dev work is modern and consistent.</p>
             </section>
