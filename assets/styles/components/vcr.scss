@@ -3,7 +3,114 @@ $COLOR_SCREEN_BACKGROUND: #0127f8;
 
 .tv-screen {
   width:  80vw;
-  height: 100vh;
-  padding: 8px 10vw;
+  height: calc(100vh - 16px);
+  padding: 5vw 10vw;
   background-color: $COLOR_SCREEN_BACKGROUND;
+  font-family: 'VCR OSD Mono';
+  text-transform: uppercase;
+  position: relative;
+  animation: turn-on 4s linear;
+
+  &__init {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    color: #00be00;
+    filter: blur(0.4px); 
+    animation: 0.1s infinite linear glitch; 
+    text-shadow: 0px 0px 3px #333333;
+    visibility: hidden;
+    pointer-events: none;
+    animation: channel 6s linear;
+    animation-fill-mode: forwards;
+    pointer-events: none;
+    padding: 5vw 10vw;
+    font-size: 2.5em;
+  }
+
+  &__white-text {
+    color: #FFFFFF; 
+    filter: blur(0.4px); 
+    animation: 0.1s infinite linear glitch; 
+    text-shadow: 0px 0px 3px #333333;
+    font-size: 2.5em;
+    font-kerning: normal;
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: 2px;
+    font-weight: bold;
+  }
+}
+
+
+
+
+@keyframes glitch{
+  0%   { transform: translateX( 0.0px) }
+  25%  { transform: translateX(-0.5px) }
+  50%  { transform: translateX( 0.0px) }
+  75%  { transform: translateX( 0.5px) }
+  100% { transform: translateX( 0.0px) }
+}
+
+@keyframes channel{
+  0%{
+      visibility:hidden;
+  }
+  20%{
+      visibility:hidden;
+  }
+  21%{
+      visibility:visible;
+  }
+  100%{
+      visibility:hidden;
+  }
+}
+
+/*-------------
+'Turn On' animation - distorts the screen
+in a CRT kind of way.
+--------------*/
+
+@keyframes turn-on{
+  0%{
+    transform:scale(1,0.8) translate3d(0,0,0);
+    filter: brightness(30);
+    opacity: 1;
+    background: black;
+  }
+  3.5%{
+    transform:scale(1,0.8) translate3d(0,100%,0);
+  }
+
+  3.6%{
+    transform:scale(1,0.8) translate3d(0,-100%,0);
+    opacity:1;
+  }
+
+  9%{
+    transform:scale(1.3,0.6) translate3d(0,100%,0);
+    filter:brightness(30);
+    opacity:0;
+  }
+
+  11%{
+    transform:scale(1,1) translate3d(0,0,0);
+    filter:contrast(0) brightness(0);
+    opacity:0;
+  }
+
+  55%{
+    background: $COLOR_SCREEN_BACKGROUND;
+  }
+
+  100%{
+    transform:scale(1,1) translate3d(0,0,0);
+    background: $COLOR_SCREEN_BACKGROUND;
+    opacity:1;
+  }
 }
