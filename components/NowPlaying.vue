@@ -13,8 +13,7 @@ export default {
       results: [],
       trackName: '',
       trackArtist: '',
-      trackCover: '',
-      test: process.env.LASTFM_API_KEY
+      trackCover: ''
     }
   },
 
