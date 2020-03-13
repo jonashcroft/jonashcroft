@@ -48,7 +48,8 @@ export default {
     '@nuxtjs/dotenv'
   ],
   env: {
-    LASTFM_API_KEY: process.env.LASTFM_API_KEY || ''
+    LASTFM_API_KEY: process.env.LASTFM_API_KEY || '',
+    LASTFM_USERNAME: process.env.LASTFM_USERNAME || ''
   },
   /*
    ** Axios module configuration
