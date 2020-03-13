@@ -1,7 +1,7 @@
 <template>
   <div
     class="tv-screen"
-    :style="colours"
+    :style="[defaultColours, albumColours]"
     :class="[isLoaded ? 'loaded' : 'not-loaded', 'lol']"
   >
     <div class="tv-screen__init">AV-1</div>
@@ -20,21 +20,20 @@ export default {
   data() {
     return {
       isLoaded: false,
-      colours: [],
       defaultColours: {
         color: '#fff',
         backgroundColor: '#0127f8'
       },
-      newColours: {
-        color: '',
-        backgroundColor: ''
+      albumColours: {
+        color: '#fff',
+        backgroundColor: '#0127f8'
       }
     }
   },
   mounted() {},
   methods: {
     doColours(colours) {
-      this.colours = colours
+      this.albumColours = colours
       this.isLoaded = true
     }
   }
