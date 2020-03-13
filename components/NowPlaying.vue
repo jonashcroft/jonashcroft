@@ -1,11 +1,11 @@
 <template>
   <div class="tv-screen__now-playing">
     <div class="tv-screen__track-details">
-      <span class="tv-screen__white-text track-about">Now Playing</span>
-      <h1
-        class="tv-screen__white-text track-name"
-        v-text="`${trackArtist} - ${trackName}`"
-      ></h1>
+      <span
+        class="tv-screen__white-text track-about"
+        v-text="nowPlaying === 'true' ? 'Now Playing' : 'Last Played'"
+      ></span>
+      <span class=" track-name" v-text="`${trackArtist} - ${trackName}`"></span>
     </div>
 
     <p class="tv-screen__album-cover">
@@ -25,6 +25,7 @@ export default {
       trackName: '',
       trackArtist: '',
       trackCover: '',
+      nowPlaying: false,
       colours: []
     }
   },
@@ -34,6 +35,8 @@ export default {
         `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${process.env.LASTFM_USERNAME}&limit=2&api_key=${process.env.LASTFM_API_KEY}&format=json`
       )
       .then((response) => {
+        this.nowPlaying =
+          response.data.recenttracks.track[0]['@attr'].nowplaying || false
         this.results = response.data.recenttracks
         this.trackName = response.data.recenttracks.track[0].name
         this.trackArtist = response.data.recenttracks.track[0].artist['#text']

@@ -11,15 +11,6 @@
   will-change: transform;
   animation: turn-on 4s linear;
 
-  .container {
-    animation: glitch-jump 3s infinite linear;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    width: 100%;
-  }
-
   &__init {
     position: absolute;
     top: 0;
@@ -36,7 +27,6 @@
     animation: channel 6s linear;
     animation-fill-mode: forwards;
     pointer-events: none;
-    padding: 5vw 10vw;
     font-size: remFont(42);
   }
 
@@ -64,22 +54,35 @@
   &__track-details{
 
     .track-about {
-      display: inline-block;
+      display: block;
       position: relative;
       font-size: remFont(30);
+      margin-bottom: remfont(20);
     }
 
     .track-name {
       font-size: remFont(36);
+      display: block;
     }
   }
 
   &__album-cover {
+    margin: 0 0;
+    
     img {
       image-rendering: pixelated;
       margin-right: remFont(24);
       width: 175px;
       height: 175px;
     }
+  }
+
+  .container {
+    animation: glitch-jump 3s infinite linear;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
   }
 }
