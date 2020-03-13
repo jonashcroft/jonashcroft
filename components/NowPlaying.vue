@@ -1,9 +1,12 @@
 <template>
-  <div>
-    <h1
-      class="tv-screen__white-text"
-      v-text="`${trackArtist} - ${trackName}`"
-    ></h1>
+  <div class="tv-screen__now-playing">
+    <div class="tv-screen__track-details">
+      <span class="tv-screen__white-text track-about">Now Playing</span>
+      <h1
+        class="tv-screen__white-text track-name"
+        v-text="`${trackArtist} - ${trackName}`"
+      ></h1>
+    </div>
 
     <p class="tv-screen__album-cover">
       <img :src="trackCover" :alt="`${trackArtist} - ${trackName}`" />
@@ -34,7 +37,7 @@ export default {
         this.results = response.data.recenttracks
         this.trackName = response.data.recenttracks.track[0].name
         this.trackArtist = response.data.recenttracks.track[0].artist['#text']
-        this.trackCover = response.data.recenttracks.track[0].image[2]['#text']
+        this.trackCover = response.data.recenttracks.track[0].image[0]['#text']
         this.displayNowPlaying()
         this.getColours()
       })
@@ -53,7 +56,6 @@ export default {
               color: swatches[key].getTitleTextColor()
             })
           }
-
           this.setColours()
         })
     },
@@ -65,7 +67,8 @@ export default {
       this.$nextTick(() => {
         this.$emit('updateColours', randomColour)
       })
-    }
+    },
+    renderTrackInfo() {}
   }
 }
 </script>

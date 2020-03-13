@@ -2,11 +2,13 @@
   <div
     class="tv-screen"
     :style="[defaultColours, albumColours]"
-    :class="[isLoaded ? 'loaded' : 'not-loaded', 'lol']"
+    :class="[isLoaded ? 'loaded' : 'not-loaded']"
   >
-    <div class="tv-screen__init">AV-1</div>
-    <h1 class="tv-screen__white-text">hello, vcr</h1>
-    <NowPlaying @updateColours="doColours" />
+    <div class="container">
+      <div class="tv-screen__init">AV-1</div>
+      <h1 class="tv-screen__white-text tv-screen__intro-heading">hello, vcr</h1>
+      <NowPlaying @updateColours="doColours" />
+    </div>
   </div>
 </template>
 

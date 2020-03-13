@@ -24,6 +24,7 @@
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/pwa": "^3.0.0-0",
+    "@nuxtjs/style-resources": "^1.0.0",
     "contentful": "^7.14.0",
     "core-js": "2",
     "node-sass": "^4.13.1",

@@ -45,11 +45,18 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '@nuxtjs/style-resources'
   ],
   env: {
     LASTFM_API_KEY: process.env.LASTFM_API_KEY || '',
     LASTFM_USERNAME: process.env.LASTFM_USERNAME || ''
+  },
+  styleResources: {
+    scss: [
+      'assets/styles/global/_config.scss',
+      'assets/styles/global/_animations.scss'
+    ]
   },
   /*
    ** Axios module configuration

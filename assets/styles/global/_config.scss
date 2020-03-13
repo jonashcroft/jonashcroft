@@ -1,0 +1,8 @@
+// px to em conversion
+$SIZE_BODY_DEFAULT: 16;
+$COLOR_SCREEN_BACKGROUND: #0127f8;
+
+@function remFont($size) {
+  $remSize: $size / #{$SIZE_BODY_DEFAULT};
+  @return #{$remSize}rem;
+}
