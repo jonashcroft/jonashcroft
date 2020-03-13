@@ -47,6 +47,9 @@ export default {
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv'
   ],
+  env: {
+    LASTFM_API_KEY: process.env.LASTFM_API_KEY || ''
+  },
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options

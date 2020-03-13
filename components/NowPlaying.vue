@@ -20,7 +20,7 @@ export default {
   mounted() {
     axios
       .get(
-        `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=wreckages&limit=2&api_key=fa2c19d07e45047e18abfd9d3b21632c&format=json`
+        `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=wreckages&limit=2&api_key=${process.env.LASTFM_API_KEY}&format=json`
       )
       .then((response) => {
         this.results = response.data.recenttracks
