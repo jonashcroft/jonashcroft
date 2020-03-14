@@ -1,15 +1,21 @@
 <template>
-  <div class="tv-screen__now-playing">
+  <div v-if="connected" class="tv-screen__now-playing">
     <div class="tv-screen__track-details">
       <span
         class="tv-screen__white-text track-about"
-        v-text="nowPlaying === 'true' ? 'Now Playing' : 'Last Played'"
+        v-text="results.nowPlaying ? 'Now Playing:' : 'Last Played'"
       ></span>
-      <span class=" track-name" v-text="`${trackArtist} - ${trackName}`"></span>
+      <span
+        class="tv-screen__white-text track-name"
+        v-text="`${results.trackArtist} - ${results.trackName}`"
+      ></span>
     </div>
 
-    <p class="tv-screen__album-cover">
-      <img :src="trackCover" :alt="`${trackArtist} - ${trackName}`" />
+    <p v-if="results.trackCover" class="tv-screen__album-cover">
+      <img
+        :src="results.trackCover"
+        :alt="`${results.trackArtist} - ${results.trackName}`"
+      />
     </p>
   </div>
 </template>
@@ -21,11 +27,13 @@ import * as Vibrant from 'node-vibrant'
 export default {
   data() {
     return {
-      results: [],
-      trackName: '',
-      trackArtist: '',
-      trackCover: '',
-      nowPlaying: false,
+      connected: false,
+      results: {
+        trackName: '',
+        trackArtist: '',
+        trackCover: '',
+        nowPlaying: false
+      },
       colours: []
     }
   },
@@ -35,22 +43,28 @@ export default {
         `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${process.env.LASTFM_USERNAME}&limit=2&api_key=${process.env.LASTFM_API_KEY}&format=json`
       )
       .then((response) => {
-        this.nowPlaying =
-          response.data.recenttracks.track[0]['@attr'].nowplaying || false
-        this.results = response.data.recenttracks
-        this.trackName = response.data.recenttracks.track[0].name
-        this.trackArtist = response.data.recenttracks.track[0].artist['#text']
-        this.trackCover = response.data.recenttracks.track[0].image[0]['#text']
+        const lastfmData = response.data.recenttracks.track[0]
+
+        this.results.nowPlaying = lastfmData['@attr'].nowplaying || false
+        this.results.trackName = lastfmData.name
+        this.results.trackArtist = lastfmData.artist['#text']
+        this.results.trackCover = lastfmData.image[0]['#text']
+
+        this.connected = true
         this.displayNowPlaying()
         this.getColours()
+      })
+      .catch((error) => {
+        window.console.log(error)
+        return error
       })
   },
   methods: {
     displayNowPlaying() {
-      return this.trackName
+      return this.results.trackName
     },
     getColours() {
-      Vibrant.from(this.trackCover)
+      Vibrant.from(this.results.trackCover)
         .getSwatches()
         .then((swatches) => {
           for (const key of Object.keys(swatches)) {

@@ -2,7 +2,7 @@
 .tv-screen {
   width:  80vw;
   height: calc(100vh - 16px);
-  padding: 5vw 10vw;
+  padding: 5vw;
   background-color: $COLOR_SCREEN_BACKGROUND;
   font-family: 'VCR OSD Mono';
   text-transform: uppercase;
@@ -10,6 +10,7 @@
   background-color: #000;
   will-change: transform;
   animation: turn-on 4s linear;
+  line-height: 1.45;
 
   &__init {
     position: absolute;
@@ -68,7 +69,7 @@
 
   &__album-cover {
     margin: 0 0;
-    
+
     img {
       image-rendering: pixelated;
       margin-right: remFont(24);
