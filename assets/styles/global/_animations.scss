@@ -94,3 +94,17 @@ Maybe see if we can make this cleaner
     opacity:1;
   }
 }
+
+/*-------------
+VCR Link effects
+--------------*/
+
+@mixin highlight(){
+  @content;
+
+  &:hover, &:focus{
+      background: $COLOR_SCREEN_LINK_HIGHLIGHT;
+      color: #fff;
+      transform: translatex(5px);
+  }
+}
