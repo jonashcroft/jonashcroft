@@ -12,6 +12,7 @@
   animation: turn-on 4s linear;
   line-height: 1.45;
   overflow: scroll;
+  display: flex;
 
   a {
     @include highlight;

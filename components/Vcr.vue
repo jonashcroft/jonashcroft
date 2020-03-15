@@ -10,55 +10,6 @@
         Jon Ashcroft
       </h1>
 
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro iste
-        doloremque repudiandae nemo architecto quidem nulla temporibus ex,
-        eveniet, nobis quis earum rerum accusamus fugit ut ad nesciunt, soluta
-        natus hic ullam odio vero.
-      </p>
-
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro iste
-        doloremque repudiandae nemo architecto quidem nulla temporibus ex,
-        eveniet, nobis quis earum rerum accusamus fugit ut ad nesciunt, soluta
-        natus hic ullam odio vero.
-      </p>
-
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro iste
-        doloremque repudiandae nemo architecto quidem nulla temporibus ex,
-        eveniet, nobis quis earum rerum accusamus fugit ut ad nesciunt, soluta
-        natus hic ullam odio vero.
-      </p>
-
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro iste
-        doloremque repudiandae nemo architecto quidem nulla temporibus ex,
-        eveniet, nobis quis earum rerum accusamus fugit ut ad nesciunt, soluta
-        natus hic ullam odio vero.
-      </p>
-
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro iste
-        doloremque repudiandae nemo architecto quidem nulla temporibus ex,
-        eveniet, nobis quis earum rerum accusamus fugit ut ad nesciunt, soluta
-        natus hic ullam odio vero.
-      </p>
-
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro iste
-        doloremque repudiandae nemo architecto quidem nulla temporibus ex,
-        eveniet, nobis quis earum rerum accusamus fugit ut ad nesciunt, soluta
-        natus hic ullam odio vero.
-      </p>
-
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro iste
-        doloremque repudiandae nemo architecto quidem nulla temporibus ex,
-        eveniet, nobis quis earum rerum accusamus fugit ut ad nesciunt, soluta
-        natus hic ullam odio vero.
-      </p>
-
       <NowPlaying @updateColours="doColours" />
     </div>
   </div>

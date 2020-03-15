@@ -3,15 +3,17 @@
     <div class="tv-screen__track-details">
       <span
         class="tv-screen__white-text track-about"
+        tabindex="0"
         v-text="results.nowPlaying ? 'Now Playing:' : 'Last Played'"
       ></span>
       <span
         class="tv-screen__white-text track-name"
+        tabindex="0"
         v-text="`${results.trackArtist} - ${results.trackName}`"
       ></span>
     </div>
 
-    <p v-if="results.trackCover" class="tv-screen__album-cover">
+    <p v-if="results.trackCover" class="tv-screen__album-cover" tabindex="0">
       <img
         :src="results.trackCover"
         :alt="`${results.trackArtist} - ${results.trackName}`"
