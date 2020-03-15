@@ -10,6 +10,10 @@
         Jon Ashcroft
       </h1>
 
+      <p class="tv-screen__white-text">
+        Currently at <a href="https://wemakewebsites.com/">We Make Websites</a>
+      </p>
+
       <NowPlaying @updateColours="doColours" />
     </div>
   </div>
