@@ -13,6 +13,7 @@
   line-height: 1.45;
   overflow: scroll;
   display: flex;
+  font-size: remFont(20);
 
   a {
     color: inherit;
@@ -60,6 +61,28 @@
     font-size: remFont(42);
   }
 
+  /*-------------
+  Navigation List
+  --------------*/
+
+  &__navigation {
+    list-style: none;
+    padding-left: 0;
+
+    .nav-item {
+      margin: 0.25em 0;
+
+      a {
+        display: block;
+        font-size: remFont(36);
+      }
+    }
+  }
+
+  /*-------------
+  'Now Playing' album art
+  --------------*/
+
   &__now-playing {
     display: flex;
     flex-direction: row-reverse;
@@ -79,7 +102,7 @@
     }
 
     .track-name {
-      font-size: remFont(36);
+      font-size: remFont(34);
       display: block;
     }
   }

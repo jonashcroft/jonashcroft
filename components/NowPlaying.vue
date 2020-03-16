@@ -42,17 +42,23 @@ export default {
   mounted() {
     axios
       .get(
-        `http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${process.env.LASTFM_USERNAME}&limit=2&api_key=${process.env.LASTFM_API_KEY}&format=json`
+        `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${process.env.LASTFM_USERNAME}&limit=2&api_key=${process.env.LASTFM_API_KEY}&format=json`
       )
       .then((response) => {
         const lastfmData = response.data.recenttracks.track[0]
 
-        this.results.nowPlaying = lastfmData['@attr'].nowplaying || false
-        this.results.trackName = lastfmData.name
-        this.results.trackArtist = lastfmData.artist['#text']
-        this.results.trackCover = lastfmData.image[0]['#text']
+        this.results = {
+          trackName: lastfmData.name,
+          trackArtist: lastfmData.artist['#text'],
+          trackCover: lastfmData.image[0]['#text'],
+          nowPlaying:
+            (lastfmData['@attr'] !== undefined &&
+              lastfmData['@attr'].nowplaying) ||
+            false
+        }
 
         this.connected = true
+
         this.displayNowPlaying()
         this.getColours()
       })

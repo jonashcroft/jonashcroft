@@ -6,13 +6,36 @@
   >
     <div class="container">
       <div class="tv-screen__init">AV-1</div>
-      <h1 class="tv-screen__white-text tv-screen__intro-heading" tabindex="0">
-        Jon Ashcroft
-      </h1>
 
-      <p class="tv-screen__white-text">
-        Currently at <a href="https://wemakewebsites.com/">We Make Websites</a>
-      </p>
+      <header class="tv-screen__intro">
+        <h1 class="tv-screen__white-text tv-screen__intro-heading" tabindex="0">
+          Jon Ashcroft
+        </h1>
+
+        <p class="tv-screen__white-text paragraph">
+          Currently at
+          <a href="https://wemakewebsites.com/">We Make Websites</a>
+        </p>
+      </header>
+
+      <ul class="tv-screen__navigation">
+        <li class="tv-screen__white-text nav-item">
+          <a href="#">List item</a>
+        </li>
+        <li class="tv-screen__white-text nav-item">
+          <a href="#">List item</a>
+        </li>
+        <li class="tv-screen__white-text nav-item">
+          <a href="#">List item</a>
+        </li>
+        <li class="tv-screen__white-text nav-item">
+          <a
+            href="https://github.com/jonashcroft/jonashcroft"
+            title="Link to my GitHub"
+            >GitHub</a
+          >
+        </li>
+      </ul>
 
       <NowPlaying @updateColours="doColours" />
     </div>
