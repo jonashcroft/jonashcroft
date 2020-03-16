@@ -8,34 +8,18 @@
       <div class="tv-screen__init">AV-1</div>
 
       <header class="tv-screen__intro">
-        <h1 class="tv-screen__white-text tv-screen__intro-heading" tabindex="0">
+        <h1
+          class="tv-screen__glitch-text tv-screen__intro-heading"
+          tabindex="0"
+        >
           Jon Ashcroft
         </h1>
-
-        <p class="tv-screen__white-text paragraph">
-          Currently at
-          <a href="https://wemakewebsites.com/">We Make Websites</a>
-        </p>
       </header>
 
-      <ul class="tv-screen__navigation">
-        <li class="tv-screen__white-text nav-item">
-          <a href="#">List item</a>
-        </li>
-        <li class="tv-screen__white-text nav-item">
-          <a href="#">List item</a>
-        </li>
-        <li class="tv-screen__white-text nav-item">
-          <a href="#">List item</a>
-        </li>
-        <li class="tv-screen__white-text nav-item">
-          <a
-            href="https://github.com/jonashcroft/jonashcroft"
-            title="Link to my GitHub"
-            >GitHub</a
-          >
-        </li>
-      </ul>
+      <div class="tv-screen__main">
+        <VcrNav />
+        <VcrContent />
+      </div>
 
       <NowPlaying @updateColours="doColours" />
     </div>
@@ -44,9 +28,13 @@
 
 <script>
 import NowPlaying from '~/components/NowPlaying.vue'
+import VcrContent from '~/components/VcrContent'
+import VcrNav from '~/components/VcrNav'
 
 export default {
   components: {
+    VcrContent,
+    VcrNav,
     NowPlaying
   },
   data() {

@@ -1,24 +1,28 @@
 <template>
-  <div v-if="connected" class="tv-screen__now-playing">
-    <div class="tv-screen__track-details">
+  <div v-if="connected" class="now-playing">
+    <div class="now-playing__track-details">
       <span
-        class="tv-screen__white-text track-about"
+        class="vcr__glitch-text track-about"
         tabindex="0"
-        v-text="results.nowPlaying ? 'Now Playing:' : 'Last Played'"
+        v-text="results.nowPlaying ? 'Now Playing:' : 'Last Played:'"
       ></span>
       <span
-        class="tv-screen__white-text track-name"
+        class="vcr__glitch-text track-name"
         tabindex="0"
         v-text="`${results.trackArtist} - ${results.trackName}`"
       ></span>
     </div>
 
-    <p v-if="results.trackCover" class="tv-screen__album-cover" tabindex="0">
+    <div
+      v-if="results.trackCover"
+      class="now-playing__album-cover"
+      tabindex="0"
+    >
       <img
         :src="results.trackCover"
         :alt="`${results.trackArtist} - ${results.trackName}`"
       />
-    </p>
+    </div>
   </div>
 </template>
 
@@ -97,3 +101,5 @@ export default {
   }
 }
 </script>
+
+<style src="~/assets/styles/components/now-playing.scss" lang="scss"></style>

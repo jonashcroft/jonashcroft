@@ -1,0 +1,36 @@
+
+.now-playing {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+
+  &__track-details{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex: 1;
+
+    .track-about {
+      display: block;
+      position: relative;
+      font-size: remFont(24);
+      margin-bottom: remfont(20);
+    }
+
+    .track-name {
+      font-size: remFont(28);
+      display: block;
+    }
+  }
+
+  &__album-cover {
+    margin: 0 0 0 0;
+
+    img {
+      image-rendering: pixelated;
+      margin-right: 1.5em;
+      width: 90px;
+      height: 90px;
+    }
+  }
+}
