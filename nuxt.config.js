@@ -27,7 +27,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/sanitizeHtml'],
+  plugins: ['~/plugins/cleanHtml'],
   /*
    ** Nuxt.js dev-modules
    */

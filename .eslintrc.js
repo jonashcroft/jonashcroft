@@ -21,6 +21,7 @@ module.exports = {
   rules: {
     "eol-last": 0,
     "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0 }],
-    "no-console": "off"
+    "no-console": "off",
+    "vue/no-v-html": "off"
   }
 }

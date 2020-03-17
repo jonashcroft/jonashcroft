@@ -1,12 +1,11 @@
 <template>
-  <main class="tv-screen__content vcr-main-content">
-    {{ renderContent }}
-  </main>
+  <main
+    class="tv-screen__content vcr-main-content"
+    v-html="renderContent"
+  ></main>
 </template>
 
 <script>
-// import marked from 'marked'
-
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 
 export default {
@@ -20,7 +19,9 @@ export default {
   },
   computed: {
     renderContent() {
-      return documentToHtmlString(this.pageData.fields.pageContent)
+      return this.cleanHtml(
+        documentToHtmlString(this.pageData.fields.pageContent)
+      )
     }
   }
 }
