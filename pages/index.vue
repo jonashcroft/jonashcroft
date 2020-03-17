@@ -1,6 +1,6 @@
 <template>
   <div class="base">
-    <Vcr />
+    <Vcr :page-data="pageData" />
   </div>
 </template>
 
@@ -17,8 +17,8 @@ export default {
     return Promise.all([
       ctfClient.getEntries({
         content_type: 'page',
-        include: 3
-        // 'fields.pageTitle': 'Homepage'
+        include: 3,
+        'fields.pageTitle': 'Home'
       })
     ])
       .then(([page]) => {

@@ -54,7 +54,7 @@ export default {
         this.results = {
           trackName: lastfmData.name,
           trackArtist: lastfmData.artist['#text'],
-          trackCover: lastfmData.image[0]['#text'],
+          trackCover: lastfmData.image[2]['#text'],
           nowPlaying:
             (lastfmData['@attr'] !== undefined &&
               lastfmData['@attr'].nowplaying) ||

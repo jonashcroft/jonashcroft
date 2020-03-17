@@ -18,7 +18,7 @@
 
       <div class="tv-screen__main">
         <VcrNav />
-        <VcrContent />
+        <VcrContent :page-data="pageData" />
       </div>
 
       <NowPlaying @updateColours="doColours" />
@@ -36,6 +36,14 @@ export default {
     VcrContent,
     VcrNav,
     NowPlaying
+  },
+  props: {
+    pageData: {
+      type: Object,
+      default() {
+        return {}
+      }
+    }
   },
   data() {
     return {
