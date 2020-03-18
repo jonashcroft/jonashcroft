@@ -12,7 +12,7 @@
           class="tv-screen__glitch-text tv-screen__intro-heading"
           tabindex="0"
         >
-          Jon Ashcroft
+          <nuxt-link to="/">Jon Ashcroft</nuxt-link>
         </h1>
       </header>
 

@@ -64,6 +64,10 @@
   &__intro-heading {
     font-size: remFont(42);
     margin-top: 0;
+
+    a {
+      text-decoration: none;
+    }
   }
 
   &__main {
