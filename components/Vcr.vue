@@ -18,7 +18,17 @@
 
       <div class="tv-screen__main">
         <VcrNav />
-        <VcrContent :page-data="pageData" />
+
+        <div v-if="blogPosts !== []">
+          <blogPostCard
+            v-for="post in blogPosts"
+            :key="post.sys.id"
+            :post="post"
+          />
+        </div>
+        <div v-else>
+          <VcrContent :page-data="pageData" />
+        </div>
       </div>
 
       <NowPlaying @updateColours="doColours" />
@@ -31,17 +41,26 @@ import NowPlaying from '~/components/NowPlaying.vue'
 import VcrContent from '~/components/VcrContent'
 import VcrNav from '~/components/VcrNav'
 
+import blogPostCard from '~/components/BlogPostCard'
+
 export default {
   components: {
     VcrContent,
     VcrNav,
-    NowPlaying
+    NowPlaying,
+    blogPostCard
   },
   props: {
     pageData: {
       type: Object,
       default() {
         return {}
+      }
+    },
+    blogPosts: {
+      type: Array,
+      default() {
+        return []
       }
     }
   },
