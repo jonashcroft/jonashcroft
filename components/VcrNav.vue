@@ -11,7 +11,7 @@
         <nuxt-link to="/contact">Talk to me</nuxt-link>
       </li>
       <li class="tv-screen__glitch-text nav-item">
-        <nuxt-link to="/writing">Blog</nuxt-link>
+        <nuxt-link to="/blog">Blog</nuxt-link>
       </li>
       <li class="tv-screen__glitch-text nav-item">
         <a href="https://github.com/jonashcroft" target="_blank">&gt; GitHub</a>

@@ -1,6 +1,6 @@
 <template>
   <div class="base">
-    <Vcr :page-data="pageData" />
+    <Vcr :page-data="pageData" :blog-posts="posts" />
   </div>
 </template>
 
@@ -18,12 +18,18 @@ export default {
       ctfClient.getEntries({
         content_type: 'page',
         include: 3,
-        'fields.pageTitle': 'Writing'
+        'fields.pageTitle': 'Blog'
+      }),
+      ctfClient.getEntries({
+        content_type: 'blogPost',
+        limit: 40
+        // order: 'fields.createdAt'
       })
     ])
-      .then(([page]) => {
+      .then(([page, post]) => {
         return {
-          pageData: page.items[0]
+          pageData: page.items[0],
+          posts: post.items
         }
       })
       .catch((error) => {
