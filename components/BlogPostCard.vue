@@ -1,7 +1,11 @@
 <template>
-  <div>
-    <div>{{ post.fields.postTitle }}<br /></div>
-  </div>
+  <li>
+    <h2>
+      <nuxt-link :to="`blog/${post.fields.slug}`">{{
+        post.fields.postTitle
+      }}</nuxt-link>
+    </h2>
+  </li>
 </template>
 
 <script>

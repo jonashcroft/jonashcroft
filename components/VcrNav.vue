@@ -2,13 +2,10 @@
   <nav class="tv-screen__navigation">
     <ul class="tv-screen__navigation__list">
       <li class="tv-screen__glitch-text nav-item">
-        <nuxt-link to="/about">Learn about me</nuxt-link>
+        <nuxt-link to="/about">about me</nuxt-link>
       </li>
       <li class="tv-screen__glitch-text nav-item">
-        <a href="#">Look at my skills</a>
-      </li>
-      <li class="tv-screen__glitch-text nav-item">
-        <nuxt-link to="/contact">Talk to me</nuxt-link>
+        <nuxt-link to="/contact">Contact</nuxt-link>
       </li>
       <li class="tv-screen__glitch-text nav-item">
         <nuxt-link to="/blog">Blog</nuxt-link>

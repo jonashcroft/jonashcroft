@@ -19,16 +19,17 @@
       <div class="tv-screen__main">
         <VcrNav />
 
-        <div v-if="blogPosts !== []">
+        <ul
+          v-if="blogPosts.length > 0"
+          class="tv-screen__card-list tv-screen__content"
+        >
           <blogPostCard
             v-for="post in blogPosts"
             :key="post.sys.id"
             :post="post"
           />
-        </div>
-        <div v-else>
-          <VcrContent :page-data="pageData" />
-        </div>
+        </ul>
+        <VcrContent v-else :page-data="pageData" />
       </div>
 
       <NowPlaying @updateColours="doColours" />
