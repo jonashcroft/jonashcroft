@@ -9,7 +9,7 @@
   position: relative;
   background-color: #000;
   will-change: transform;
-  animation: turn-on 4s linear;
+  // animation: turn-on 4s linear;
   line-height: 1.45;
   overflow: hidden;
   display: flex;
@@ -75,6 +75,7 @@
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: remFont(20);
+    height: 100%;
   }
 
   /*-------------

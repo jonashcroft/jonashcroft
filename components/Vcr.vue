@@ -32,7 +32,7 @@
         <VcrContent v-else :page-data="pageData" />
       </div>
 
-      <NowPlaying @updateColours="doColours" />
+      <NowPlaying :song-data="songData" :song-colours="songColours" />
     </div>
   </div>
 </template>
@@ -62,6 +62,18 @@ export default {
       type: Array,
       default() {
         return []
+      }
+    },
+    songData: {
+      type: Object,
+      default() {
+        return {}
+      }
+    },
+    songColours: {
+      type: Object,
+      default() {
+        return {}
       }
     }
   },
