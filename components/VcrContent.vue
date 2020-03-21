@@ -19,8 +19,18 @@ export default {
   },
   computed: {
     renderContent() {
+      const contentType = this.pageData.sys.contentType.sys.id
+      const fieldName = contentType === 'page' ? 'pageContent' : 'content'
+
+      const contentOptions = {
+        renderNode: {
+          'embedded-asset-block': (node) =>
+            `<img class="img-fluid" src="${node.data.target.fields.file.url}"/>`
+        }
+      }
+
       return this.cleanHtml(
-        documentToHtmlString(this.pageData.fields.pageContent)
+        documentToHtmlString(this.pageData.fields[fieldName], contentOptions)
       )
     }
   }

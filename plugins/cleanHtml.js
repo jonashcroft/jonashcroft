@@ -34,7 +34,8 @@ function cleanHtml(content) {
       'th',
       'td',
       'pre',
-      'iframe'
+      'iframe',
+      'img'
     ],
     disallowedTagsMode: 'discard',
     allowedAttributes: {

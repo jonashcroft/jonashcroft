@@ -32,7 +32,7 @@
         <VcrContent v-else :page-data="pageData" />
       </div>
 
-      <NowPlaying :song-data="songData" :song-colours="songColours" />
+      <NowPlaying />
     </div>
   </div>
 </template>

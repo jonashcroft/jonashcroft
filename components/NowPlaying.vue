@@ -4,23 +4,23 @@
       <span
         class="vcr__glitch-text track-about"
         tabindex="0"
-        v-text="results.nowPlaying ? 'Now Playing:' : 'Last Played:'"
+        v-text="storedResults.nowPlaying ? 'Now Playing:' : 'Last Played:'"
       ></span>
       <span
         class="vcr__glitch-text track-name"
         tabindex="0"
-        v-text="`${results.trackArtist} - ${results.trackName}`"
+        v-text="`${storedResults.trackArtist} - ${storedResults.trackName}`"
       ></span>
     </div>
 
     <div
-      v-if="results.trackCover"
+      v-if="storedResults.trackCover"
       class="now-playing__album-cover"
       tabindex="0"
     >
       <img
-        :src="results.trackCover"
-        :alt="`${results.trackArtist} - ${results.trackName}`"
+        :src="storedResults.trackCover"
+        :alt="`${storedResults.trackArtist} - ${storedResults.trackName}`"
       />
     </div>
   </div>
@@ -38,12 +38,18 @@ export default {
         trackName: '',
         trackArtist: '',
         trackCover: '',
-        nowPlaying: false
+        nowPlaying: false,
+        colours: []
       },
-      colours: []
+      storedResults: {}
     }
   },
   mounted() {
+    if (Object.keys(this.storedResults).length !== 0) {
+      this.results = JSON.parse(sessionStorage.results)
+      console.log(`we got the stored data`)
+    }
+
     axios
       .get(
         `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${process.env.LASTFM_USERNAME}&limit=2&api_key=${process.env.LASTFM_API_KEY}&format=json`
@@ -58,7 +64,8 @@ export default {
           nowPlaying:
             (lastfmData['@attr'] !== undefined &&
               lastfmData['@attr'].nowplaying) ||
-            false
+            false,
+          colours: []
         }
 
         this.connected = true
@@ -80,7 +87,7 @@ export default {
         .getSwatches()
         .then((swatches) => {
           for (const key of Object.keys(swatches)) {
-            this.colours.push({
+            this.results.colours.push({
               backgroundColor: swatches[key].getHex(),
               color: swatches[key].getTitleTextColor()
             })
@@ -89,15 +96,19 @@ export default {
         })
     },
     setColours() {
-      const randomColour = this.colours[
-        Math.floor(Math.random() * this.colours.length)
+      const randomColour = this.results.colours[
+        Math.floor(Math.random() * this.results.colours.length)
       ]
 
-      this.$nextTick(() => {
-        this.$emit('updateColours', randomColour)
-      })
-    },
-    renderTrackInfo() {}
+      if (JSON.stringify(this.results !== JSON.stringify(this.storedResults))) {
+        this.storedResults = this.results
+        sessionStorage.setItem('results', JSON.stringify(this.storedResults))
+
+        this.$nextTick(() => {
+          this.$emit('updateColours', randomColour)
+        })
+      }
+    }
   }
 }
 </script>

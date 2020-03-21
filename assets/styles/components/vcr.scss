@@ -137,11 +137,12 @@
     width: 65%;
     overflow: scroll;
     // TODO: Make this dynamic
-    height: 400px;
+    height: 475px;
+    margin: 0;
+    padding: 0;
 
     @media only screen and (max-width: 768px) {
       width: 100%;
-      // he
     }
   }
 
