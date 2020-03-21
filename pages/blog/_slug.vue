@@ -10,6 +10,7 @@ import Vcr from '~/components/Vcr.vue'
 
 const ctfClient = createClient()
 export default {
+  layout: 'blogPost',
   components: {
     Vcr
   },
