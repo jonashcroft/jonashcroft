@@ -1,0 +1,59 @@
+$bodyFont: 'Inter', sans-serif;
+
+$fontWeightBody: 300;
+$fontWeightHeading: 800;
+
+.blog-post {
+  background: white;
+  width: 80vw;
+  padding: 3vw;
+
+  &__heading {
+    width: 50%;
+    margin: 0 auto;
+
+    h1 {
+      font-family: $bodyFont;
+      font-weight: $fontWeightHeading;
+      line-height: 1.2;
+      font-size: remFont(36);
+
+    }
+  }
+
+  &__article {
+    width: 70%;
+    max-width: 580px;
+    margin: 0 auto;
+    font-family: $bodyFont;
+    font-weight: $fontWeightBody;
+    line-height: 1.6;
+    color: #121212;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  code[class*=language-],
+  pre[class*=language-]{
+    max-width: 100%;
+    font-size: remFont(12);
+    margin: 3.5em auto;
+    position: relative;
+  }
+
+  code:not([class*='language-']){
+    padding: 2px 4px;
+    border: 0;
+    font-family: Menlo, Courier New, monospace;
+    font-size: remFont(14);
+    font-weight: 400;
+    color: #222;
+    border-radius: 2px;
+    border: 1px solid #e3e3e3;
+    background: #f4f4f4;
+}
+}

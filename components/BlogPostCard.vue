@@ -1,7 +1,7 @@
 <template>
   <li>
     <h2>
-      <nuxt-link :to="`blog/${post.fields.slug}`">{{
+      <nuxt-link :to="`/blog/${post.fields.slug}`">{{
         post.fields.postTitle
       }}</nuxt-link>
     </h2>

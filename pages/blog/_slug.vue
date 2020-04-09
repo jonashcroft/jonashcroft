@@ -1,18 +1,17 @@
 <template>
   <div class="base">
-    <Vcr :page-data="pageData" />
+    <blogPost :post="postData" />
   </div>
 </template>
 
 <script>
 import { createClient } from '~/plugins/contentful.js'
-import Vcr from '~/components/Vcr.vue'
+import blogPost from '~/components/BlogPost.vue'
 
 const ctfClient = createClient()
 export default {
-  layout: 'blogPost',
   components: {
-    Vcr
+    blogPost
   },
   asyncData({ env, params }) {
     return Promise.all([
@@ -22,9 +21,9 @@ export default {
         'fields.slug': params.slug
       })
     ])
-      .then(([page]) => {
+      .then(([post]) => {
         return {
-          pageData: page.items[0]
+          postData: post.items[0]
         }
       })
       .catch((error) => {

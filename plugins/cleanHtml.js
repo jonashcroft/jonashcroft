@@ -11,6 +11,7 @@ function cleanHtml(content) {
       'h5',
       'h6',
       'blockquote',
+      'article',
       'p',
       'a',
       'ul',
@@ -39,7 +40,11 @@ function cleanHtml(content) {
     ],
     disallowedTagsMode: 'discard',
     allowedAttributes: {
-      a: ['href', 'name', 'target'],
+      a: ['href', 'name', 'target', 'class'],
+      article: ['class'],
+      h1: ['class'],
+      pre: ['class'],
+      code: ['class'],
       // We don't currently allow img itself by default, but this
       // would make sense if we did. You could add srcset here,
       // and if you do the URL is checked for safety

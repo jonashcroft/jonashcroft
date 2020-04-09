@@ -786,11 +786,6 @@
     "@contentful/rich-text-types" "^13.4.0"
     escape-html "^1.0.3"
 
-"@contentful/rich-text-types@^12.1.2":
-  version "12.1.2"
-  resolved "https://registry.yarnpkg.com/@contentful/rich-text-types/-/rich-text-types-12.1.2.tgz#3ac70eb49e7636705e5b962d3c91e2cffbee5e5a"
-  integrity sha512-AFLfDBKEj/6zYg4srg0165d3zyw5iprVjyW/Mll0C8IXT1VPadXIhkcA28N5BKYzOtykuJ2wOYNqvs1zAkNpUQ==
-
 "@contentful/rich-text-types@^13.4.0":
   version "13.4.0"
   resolved "https://registry.yarnpkg.com/@contentful/rich-text-types/-/rich-text-types-13.4.0.tgz#a59c311ebd1b801ee00edbc08663c8d78da26171"
@@ -2864,13 +2859,6 @@ contentful-resolve-response@^1.1.4:
   integrity sha512-oFq6n6zjbiwD9/7mBa8YHPwvPM0B0D4uOgg1n/rVzpQPhCrzeIixNj6fbJAbDiJt05rZqxiY3K1Db7pPRhRaZw==
   dependencies:
     lodash "^4.17.4"
-
-contentful-rich-text-vue-renderer@^1.1.5:
-  version "1.1.5"
-  resolved "https://registry.yarnpkg.com/contentful-rich-text-vue-renderer/-/contentful-rich-text-vue-renderer-1.1.5.tgz#ec9c072d026b5b7360d3b75ed3eafb1bd14e055e"
-  integrity sha512-3N9akWhEjG2absydDmgA9aN0dP7PK6GfNfemW2u8rgSHXOiieuTGdiMDL0tI/auTwiawOl7eIxI1jJyYV53kyQ==
-  dependencies:
-    "@contentful/rich-text-types" "^12.1.2"
 
 contentful-sdk-core@^6.4.0:
   version "6.4.0"
@@ -6163,10 +6151,10 @@ markdown-table@^1.1.0:
   resolved "https://registry.yarnpkg.com/markdown-table/-/markdown-table-1.1.3.tgz#9fcb69bcfdb8717bfd0398c6ec2d93036ef8de60"
   integrity sha512-1RUZVgQlpJSPWYbFSpmudq5nHY1doEIv89gBtF0s4gW1GF2XorxcA/70M5vq7rLv0a6mhOUccRsqkwhwLCIQ2Q==
 
-marked@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/marked/-/marked-0.8.0.tgz#ec5c0c9b93878dc52dd54be8d0e524097bd81a99"
-  integrity sha512-MyUe+T/Pw4TZufHkzAfDj6HarCBWia2y27/bhuYkTaiUnfDYFnCP3KUN+9oM7Wi6JA2rymtVYbQu3spE0GCmxQ==
+marked@^0.8.2:
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-0.8.2.tgz#4faad28d26ede351a7a1aaa5fec67915c869e355"
+  integrity sha512-EGwzEeCcLniFX51DhTpmTom+dSA/MG/OBUDjnWtHbEnjAH180VzUeAw+oE4+Zv+CoYBWyRlYOTR0N8SO9R1PVw==
 
 mathml-tag-names@^2.1.0:
   version "2.1.3"
@@ -10254,6 +10242,11 @@ vue-no-ssr@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/vue-no-ssr/-/vue-no-ssr-1.1.1.tgz#875f3be6fb0ae41568a837f3ac1a80eaa137b998"
   integrity sha512-ZMjqRpWabMPqPc7gIrG0Nw6vRf1+itwf0Itft7LbMXs2g3Zs/NFmevjZGN1x7K3Q95GmIjWbQZTVerxiBxI+0g==
+
+vue-prism-component@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/vue-prism-component/-/vue-prism-component-1.1.1.tgz#df0e375f7f9b367b069b2d54e6ed86facde96030"
+  integrity sha512-M4wM7gMIagWgf3YNS5Hrq7YDYu0pYbqMaJOhkVDfCfJ1col4ZCv+uyWpW/gkYZCuG3ic8UF3EAV22asm4pWjMA==
 
 vue-router@^3.1.3:
   version "3.1.6"

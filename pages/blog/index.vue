@@ -22,9 +22,9 @@ export default {
       }),
       ctfClient.getEntries({
         content_type: 'blogPost',
-        include: 2,
-        limit: 40
-        // order: '-fields.createdAt'
+        include: 3,
+        limit: 40,
+        order: '-fields.publishDate'
       })
     ])
       .then(([page, post]) => {

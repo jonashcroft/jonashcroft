@@ -2,7 +2,6 @@
 .tv-screen {
   width:  80vw;
   height: calc(100vh - 16px);
-  padding: 3vw;
   background-color: $COLOR_SCREEN_BACKGROUND;
   font-family: 'VCR OSD Mono';
   text-transform: uppercase;
@@ -136,10 +135,9 @@
   &__content {
     width: 65%;
     overflow: scroll;
-    // TODO: Make this dynamic
-    height: 475px;
     margin: 0;
     padding: 0;
+    word-wrap: break-word;
 
     @media only screen and (max-width: 768px) {
       width: 100%;
@@ -152,6 +150,7 @@
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
+    padding: 3vw;
   }
 }
 

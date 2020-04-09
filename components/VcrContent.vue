@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
+import marked from 'marked'
 
 export default {
   props: {
@@ -18,20 +18,21 @@ export default {
     }
   },
   computed: {
+    contentType() {
+      return this.pageData.sys.contentType.sys.id
+    },
     renderContent() {
-      const contentType = this.pageData.sys.contentType.sys.id
-      const fieldName = contentType === 'page' ? 'pageContent' : 'content'
+      let pageContent = marked(this.pageData.fields.content)
 
-      const contentOptions = {
-        renderNode: {
-          'embedded-asset-block': (node) =>
-            `<img class="img-fluid" src="${node.data.target.fields.file.url}"/>`
-        }
+      if (this.contentType === 'blogPost') {
+        pageContent = `
+        <h1 class="blog-post-title">${this.pageData.fields.postTitle}</h1>
+        <article class="blog-post">
+          ${marked(this.pageData.fields.content)}
+        </article>`
       }
 
-      return this.cleanHtml(
-        documentToHtmlString(this.pageData.fields[fieldName], contentOptions)
-      )
+      return this.cleanHtml(pageContent)
     }
   }
 }
