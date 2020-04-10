@@ -1,12 +1,28 @@
 $bodyFont: 'Inter', sans-serif;
 
 $fontWeightBody: 300;
+$fontWeightMid: 600;
 $fontWeightHeading: 800;
 
 .blog-post {
   background: white;
   width: 80vw;
   padding: 3vw;
+
+  &__nav {
+    a {
+      font-family: $bodyFont;
+      font-weight: $fontWeightMid;
+      line-height: 1.2;
+      font-size: remFont(22);
+      color: black;
+      text-decoration: none;
+    }
+    
+    a:hover {
+      text-decoration: underline;
+    }
+  }
 
   &__heading {
     width: 50%;
@@ -27,7 +43,7 @@ $fontWeightHeading: 800;
     margin: 0 auto;
     font-family: $bodyFont;
     font-weight: $fontWeightBody;
-    line-height: 1.6;
+    line-height: 1.8;
     color: #121212;
   }
 

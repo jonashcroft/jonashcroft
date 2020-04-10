@@ -34,6 +34,7 @@
 
   p {
     margin: 0 0 1.4em 0;
+    font-size: remFont(24);
   }
 
   &__init {
@@ -129,8 +130,6 @@
       }
     }
   }
-
-
 
   &__content {
     width: 65%;

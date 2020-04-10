@@ -1,11 +1,13 @@
 <template>
   <div class="blog-post">
-    <nav>
-      <nuxt-link :to="`/`">Go back</nuxt-link>
+    <nav class="blog-post__nav">
+      <nuxt-link :to="`/`">Jon Ashcroft</nuxt-link>
     </nav>
     <br />
     <header class="blog-post__heading">
       <h1 v-text="post.fields.postTitle"></h1>
+
+      <p v-text="post.fields.publishDate"></p>
     </header>
 
     <article class="blog-post__article" v-html="renderContent"></article>
@@ -55,13 +57,17 @@ export default {
         {
           src:
             'https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/components/prism-scss.min.js'
+        },
+        {
+          src:
+            'https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/components/prism-php.min.js'
         }
       ],
       link: [
         {
           rel: 'stylesheet',
           href:
-            'https://fonts.googleapis.com/css2?family=Inter:wght@300;800&display=swap'
+            'https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&display=swap'
         },
         {
           rel: 'stylesheet',
