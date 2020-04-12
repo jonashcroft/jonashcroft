@@ -8,14 +8,18 @@ $fontWeightHeading: 800;
   background: white;
   width: 80vw;
   padding: 3vw;
+  font-family: $bodyFont;
+
+  @media only screen and (max-width: 768px) {
+    width: 95vw;
+  }
 
   &__nav {
     a {
-      font-family: $bodyFont;
       font-weight: $fontWeightMid;
       line-height: 1.2;
       font-size: remFont(22);
-      color: black;
+      color: #0d1016;
       text-decoration: none;
     }
     
@@ -26,25 +30,67 @@ $fontWeightHeading: 800;
 
   &__heading {
     width: 50%;
-    margin: 0 auto;
+    margin: 5vh auto;
+
+    @media only screen and (max-width: 768px) {
+      width: 85vw;
+    }
 
     h1 {
       font-family: $bodyFont;
+      font-size: remFont(36);
       font-weight: $fontWeightHeading;
       line-height: 1.2;
-      font-size: remFont(36);
+      color: #0d1016;
+      margin: 0 0 1vh 0;
 
+      @media only screen and (max-width: 768px) {
+        font-size: remFont(24);
+      }
+    }
+
+    time {
+      font-size: remFont(14);
+      color: #718096;
     }
   }
 
   &__article {
-    width: 70%;
+    width: 70vw;
     max-width: 580px;
     margin: 0 auto;
     font-family: $bodyFont;
     font-weight: $fontWeightBody;
     line-height: 1.8;
     color: #121212;
+
+    @media only screen and (max-width: 768px) {
+      width: 85vw;
+    }
+
+    $HEADING_BASE_FONT_SIZE: 18;
+    $HEADING_BASE_FONT_SIZE_MOBILE: 14;
+    $HEADING_SCALE: 3; // amount of px headings grow from h6 to h1
+    
+    @for $i from 1 through 6 {
+      h#{$i} {
+        font-family: $bodyFont;
+        line-height: 1.2;
+        font-size: remFont($HEADING_BASE_FONT_SIZE + $HEADING_SCALE * (6 - $i));
+
+        @media only screen and (max-width: 768px) {
+          font-size: remFont($HEADING_BASE_FONT_SIZE_MOBILE + $HEADING_SCALE * (6 - $i));
+        }
+      }
+    }
+  }
+
+  p {
+    margin-bottom: remFont(24);
+  }
+
+  a {
+    // color: red;
   }
 
   img {
@@ -71,5 +117,5 @@ $fontWeightHeading: 800;
     border-radius: 2px;
     border: 1px solid #e3e3e3;
     background: #f4f4f4;
-}
+  }
 }

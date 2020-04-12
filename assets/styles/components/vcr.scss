@@ -92,6 +92,24 @@
     }
 
   }
+
+  &__card-list {
+    li {
+
+    }
+
+    h2 {
+      font-size: remFont(24);
+
+      @media only screen and (max-width: 768px) {
+        font-size: remFont(16);
+      }
+    }
+
+    a {
+
+    }
+  }
   
   /*-------------
   Navigation Side bar
@@ -133,10 +151,10 @@
 
   &__content {
     width: 65%;
+    height: 100%;
     overflow: scroll;
     margin: 0;
     padding: 0;
-    word-wrap: break-word;
 
     @media only screen and (max-width: 768px) {
       width: 100%;

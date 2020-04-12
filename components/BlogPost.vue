@@ -7,7 +7,11 @@
     <header class="blog-post__heading">
       <h1 v-text="post.fields.postTitle"></h1>
 
-      <p v-text="post.fields.publishDate"></p>
+      <time
+        :title="post.fields.publishDate"
+        :datetime="post.fields.publishDate"
+        v-text="renderDate"
+      ></time>
     </header>
 
     <article class="blog-post__article" v-html="renderContent"></article>
@@ -29,6 +33,17 @@ export default {
   computed: {
     renderContent() {
       return this.cleanHtml(marked(this.post.fields.content))
+    },
+    renderDate() {
+      const dateObj = new Date(this.post.fields.publishDate)
+
+      const options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      }
+      return dateObj.toLocaleDateString('en-GB', options)
     }
   },
   head() {
@@ -57,10 +72,6 @@ export default {
         {
           src:
             'https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/components/prism-scss.min.js'
-        },
-        {
-          src:
-            'https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/components/prism-php.min.js'
         }
       ],
       link: [
