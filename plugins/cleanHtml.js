@@ -66,7 +66,41 @@ function cleanHtml(content) {
     allowedSchemes: ['http', 'https', 'ftp', 'mailto'],
     allowedSchemesByTag: {},
     allowedSchemesAppliedToAttributes: ['href', 'src', 'cite'],
-    allowProtocolRelative: true
+    allowProtocolRelative: true,
+    transformTags: {
+      a: (tagName, attribs) => {
+        if (attribs.title !== undefined && attribs.title.includes('image')) {
+          return {
+            tagName: 'a',
+            attribs: {
+              class: 'has-image',
+              href: attribs.href,
+              alt: attribs.alt
+            }
+          }
+        } else if (
+          attribs.href !== undefined &&
+          (attribs.href.includes('ashcroft.dev') === false ||
+            attribs.href.includes('jonashcroft.co.uk') === false)
+        ) {
+          return {
+            tagName: 'a',
+            attribs: {
+              href: attribs.href,
+              target: '_blank',
+              rel: 'nofollow noopener noreferrer'
+            }
+          }
+        } else {
+          return {
+            tagName: 'a',
+            attribs: {
+              href: attribs.href
+            }
+          }
+        }
+      }
+    }
   })
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="tv-screen" :style="[defaultColours, albumColours]">
+  <div class="tv-screen">
     <div class="container">
       <div class="tv-screen__init">AV-1</div>
 
@@ -28,7 +28,7 @@
         <VcrContent v-else :page-data="pageData" />
       </div>
 
-      <NowPlaying />
+      <NowPlaying :song-data="songData" />
     </div>
   </div>
 </template>
@@ -66,29 +66,26 @@ export default {
         return {}
       }
     },
-    songColours: {
+    albumColours: {
       type: Object,
       default() {
         return {}
       }
     }
   },
-  data() {
-    return {
-      defaultColours: {
-        color: '#fff',
-        backgroundColor: '#0127f8'
-      },
-      albumColours: {
-        color: '#fff',
-        backgroundColor: '#0127f8'
-      }
+  computed: {
+    getVcrColours() {
+      return this.albumColours
     }
+  },
+  mounted() {
+    this.getNowPlaying()
   },
   methods: {
     doColours(colours) {
       this.albumColours = colours
-    }
+    },
+    getNowPlaying() {}
   }
 }
 </script>

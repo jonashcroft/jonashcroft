@@ -1,10 +1,17 @@
 <template>
   <div class="base">
-    <Vcr :page-data="pageData" :blog-posts="posts" />
+    <Vcr
+      :album-colours="albumColours"
+      :page-data="pageData"
+      :blog-posts="posts"
+      :song-data="results"
+      :style="getStyleAttrs"
+    />
   </div>
 </template>
 
 <script>
+import * as Vibrant from 'node-vibrant'
 import { createClient } from '~/plugins/contentful.js'
 import Vcr from '~/components/Vcr.vue'
 
@@ -13,7 +20,7 @@ export default {
   components: {
     Vcr
   },
-  asyncData({ env }) {
+  asyncData({ env, $axios }) {
     return Promise.all([
       ctfClient.getEntries({
         content_type: 'page',
@@ -25,18 +32,72 @@ export default {
         include: 3,
         limit: 40,
         order: '-fields.publishDate'
-      })
+      }),
+      $axios.get(
+        `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${process.env.LASTFM_USERNAME}&limit=2&api_key=${process.env.LASTFM_API_KEY}&format=json`
+      )
     ])
-      .then(([page, post]) => {
+      .then(([page, post, response]) => {
         return {
           pageData: page.items[0],
-          posts: post.items
+          posts: post.items,
+          musicData: response.data.recenttracks.track[0],
+          results: {
+            trackName: response.data.recenttracks.track[0].name,
+            trackArtist: response.data.recenttracks.track[0].artist['#text'],
+            trackCover: response.data.recenttracks.track[0].image[0]['#text'],
+            nowPlaying:
+              (response.data.recenttracks.track[0]['@attr'] !== undefined &&
+                response.data.recenttracks.track[0]['@attr'].nowplaying) ||
+              false,
+            colours: []
+          }
         }
       })
       .catch((error) => {
         console.error(error)
         return error
       })
+  },
+  data() {
+    return {
+      albumColours: {},
+      getStyleAttrs: {}
+    }
+  },
+  mounted() {
+    this.getColours()
+  },
+  methods: {
+    getColours() {
+      Vibrant.from(this.results.trackCover)
+        .getSwatches()
+        .then((swatches) => {
+          for (const key of Object.keys(swatches)) {
+            if (swatches[key] === null) {
+              continue
+            }
+
+            this.results.colours.push({
+              backgroundColor: swatches[key].getHex(),
+              color: swatches[key].getTitleTextColor()
+            })
+          }
+
+          if (this.results.colours.length === []) {
+            this.getStyleAttrs = ''
+            return
+          }
+
+          this.albumColours = {
+            backgroundColor: this.results.colours[0].backgroundColor,
+            color: this.results.colours[0].color
+          }
+
+          this.getStyleAttrs = `--album-bg-colour: ${this.albumColours.backgroundColor};
+            --album-text-colour: ${this.albumColours.color};`
+        })
+    }
   }
 }
 </script>

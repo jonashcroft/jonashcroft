@@ -81,16 +81,16 @@ Maybe see if we can make this cleaner
   11%{
     transform:scale(1,1) translate3d(0,0,0);
     filter:contrast(0) brightness(0);
-    opacity:0;
+    opacity:1;
   }
 
   55%{
-    background-color: $COLOR_SCREEN_BACKGROUND;
+    // background-color: $COLOR_SCREEN_BACKGROUND;
   }
 
   100%{
     transform:scale(1,1) translate3d(0,0,0);
-    background-color: $COLOR_SCREEN_BACKGROUND;
+    // background-color: $COLOR_SCREEN_BACKGROUND;
     opacity:1;
   }
 }

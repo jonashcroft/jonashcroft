@@ -1,18 +1,23 @@
 
+:root {
+  --album-bg-colour: #{$COLOR_SCREEN_BACKGROUND};
+  --album-text-colour: #{$COLOR_WHITE};
+}
+
 .tv-screen {
   width:  80vw;
   height: calc(100vh - 16px);
-  background-color: $COLOR_SCREEN_BACKGROUND;
+  background-color: var(--album-bg-colour);
   font-family: 'VCR OSD Mono';
   text-transform: uppercase;
   position: relative;
-  background-color: #000;
   will-change: transform;
-  // animation: turn-on 4s linear;
+  animation: turn-on 4s linear;
   line-height: 1.45;
   overflow: hidden;
   display: flex;
   font-size: remFont(20);
+  color: var(--album-text-colour);
 
   @media only screen and (max-width: 768px) {
     font-size: remFont(16);
@@ -40,7 +45,7 @@
   &__init {
     position: absolute;
     top: 5vh;
-    left: 0;
+    left: 5vh;
     bottom: 0;
     right: 0;
     z-index: 1;
@@ -54,9 +59,15 @@
     animation-fill-mode: forwards;
     pointer-events: none;
     font-size: remFont(42);
+
+    @media only screen and (max-width: 768px) {
+      font-size: remFont(18);
+      top: 3vh;
+      left: 3vh;
+    }
   }
 
-  p, span, a,
+  p, span, a, time,
   h1, h2, h3, h4, h5, h6 {
     filter: blur(0.4px); 
     text-shadow: 0px 0px 3px #333333;
@@ -65,6 +76,11 @@
     -webkit-font-smoothing: antialiased;
     letter-spacing: 2px;
     font-weight: bold;
+  }
+
+  *::selection {
+    background-color: $COLOR_SCREEN_LINK_HIGHLIGHT;
+    color: $COLOR_WHITE;
   }
 
   &__intro-heading {
@@ -94,12 +110,17 @@
   }
 
   &__card-list {
-    li {
+    margin: 0;
+    padding: 0;
 
+    li {
+      margin-top: 0;
+      margin-bottom: 3.5vh;
     }
 
     h2 {
       font-size: remFont(24);
+      margin: 0;
 
       @media only screen and (max-width: 768px) {
         font-size: remFont(16);
@@ -154,7 +175,7 @@
     height: 100%;
     overflow: scroll;
     margin: 0;
-    padding: 0;
+    padding: 0 0 5vh 0;
 
     @media only screen and (max-width: 768px) {
       width: 100%;

@@ -30,6 +30,20 @@ export default {
         console.error(error)
         return error
       })
+  },
+  head() {
+    return {
+      link: [
+        {
+          rel: 'stylesheet',
+          href:
+            'https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&display=swap'
+        }
+      ]
+    }
   }
 }
 </script>
+
+<style src="~/assets/styles/components/blog-post.scss" lang="scss"></style>
+<style src="~/assets/styles/components/prism-theme.scss" lang="scss"></style>

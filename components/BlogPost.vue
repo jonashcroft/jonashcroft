@@ -21,6 +21,17 @@
 <script>
 import marked from 'marked'
 
+import Prism from 'prismjs'
+
+import 'prismjs/components/prism-bash'
+import 'prismjs/components/prism-javascript'
+import 'prismjs/components/prism-json'
+import 'prismjs/components/prism-liquid'
+import 'prismjs/components/prism-markdown'
+import 'prismjs/components/prism-markup-templating'
+import 'prismjs/components/prism-php'
+import 'prismjs/components/prism-scss'
+
 export default {
   props: {
     post: {
@@ -46,49 +57,8 @@ export default {
       return dateObj.toLocaleDateString('en-GB', options)
     }
   },
-  head() {
-    return {
-      script: [
-        {
-          src:
-            'https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/prism.min.js'
-        },
-        {
-          src:
-            'https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/components/prism-javascript.min.js'
-        },
-        {
-          src:
-            'https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/components/prism-bash.min.js'
-        },
-        {
-          src:
-            'https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/components/prism-liquid.min.js'
-        },
-        {
-          src:
-            'https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/components/prism-json.min.js'
-        },
-        {
-          src:
-            'https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/components/prism-scss.min.js'
-        }
-      ],
-      link: [
-        {
-          rel: 'stylesheet',
-          href:
-            'https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&display=swap'
-        },
-        {
-          rel: 'stylesheet',
-          href:
-            'https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/themes/prism-okaidia.min.css'
-        }
-      ]
-    }
+  mounted() {
+    Prism.highlightAll()
   }
 }
 </script>
-
-<style src="~/assets/styles/components/blog-post.scss" lang="scss"></style>
