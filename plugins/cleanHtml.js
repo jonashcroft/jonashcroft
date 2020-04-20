@@ -99,6 +99,15 @@ function cleanHtml(content) {
             }
           }
         }
+      },
+      img: (text, attribs, tagName) => {
+        if (text.includes('img')) {
+          return {
+            attribs: {
+              class: 'is-image'
+            }
+          }
+        }
       }
     }
   })

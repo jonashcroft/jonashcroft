@@ -90,7 +90,22 @@ $fontWeightHeading: 800;
   }
 
   a {
-    // color: red;
+    color: $COLOR_SCREEN_BACKGROUND;
+    position: relative;
+
+    &:after {
+      bottom: -0.5em;
+      content: '';
+      height: 2px;
+      left: 0;
+      position: absolute;
+      right: 0;
+      width: 100%;
+    }
+
+    &:hover {
+      // text-decoration: none;
+    }
   }
 
   img {

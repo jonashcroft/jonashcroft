@@ -1,3 +1,6 @@
+import { createClient } from '~/plugins/contentful.js'
+const cdaClient = createClient()
+
 export default {
   mode: 'universal',
   /*
@@ -36,7 +39,13 @@ export default {
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
     // Doc: https://github.com/nuxt-community/stylelint-module
-    '@nuxtjs/stylelint-module'
+    '@nuxtjs/stylelint-module',
+    [
+      '@nuxtjs/google-analytics',
+      {
+        id: 'UA-12301-2'
+      }
+    ]
   ],
   /*
    ** Nuxt.js modules
@@ -47,7 +56,26 @@ export default {
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources'[
+      ('@nuxtjs/sitemap',
+      {
+        hostname: 'https://ashcroft.dev',
+        path: '/sitemap.xml',
+        gzip: true,
+        defaults: {
+          changefreq: 'weekly',
+          priority: 1,
+          lastmod: new Date(),
+          lastmodrealtime: true
+        },
+        filter({ routes }) {
+          return routes.map((route) => {
+            //   route.url = route.url.endsWith('/') ? route.url : `${route.url}/`
+            return route
+          })
+        }
+      })
+    ]
   ],
   env: {
     LASTFM_API_KEY: process.env.LASTFM_API_KEY || '',
@@ -66,6 +94,32 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {},
+
+  generate: {
+    fallback: true,
+    routes: () => {
+      return Promise.all([
+        cdaClient.getEntries({
+          limit: 400,
+          content_type: 'blogPost'
+        })
+      ]).then(([blogPosts]) => {
+        return [
+          // map blog blogPosts to URLs
+          ...blogPosts.items.map((blogPost) => {
+            const postDate = new Date(blogPost.fields.publishDate)
+              .toISOString()
+              .slice(0, 10)
+              .split('-')
+              .join('/')
+
+            return `/${postDate}/${blogPost.fields.slug}/`
+          })
+        ]
+      })
+    }
+  },
+
   /*
    ** Build configuration
    */
