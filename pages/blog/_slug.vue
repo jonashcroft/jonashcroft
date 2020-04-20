@@ -13,7 +13,7 @@ export default {
   components: {
     blogPost
   },
-  asyncData({ env, params }) {
+  asyncData({ env, params, error }) {
     return Promise.all([
       ctfClient.getEntries({
         content_type: 'blogPost',
@@ -22,13 +22,17 @@ export default {
       })
     ])
       .then(([post]) => {
-        return {
-          postData: post.items[0]
+        if (post.items && post.items.length) {
+          return {
+            postData: post.items[0]
+          }
+        } else {
+          return error({ statusCode: 404 })
         }
       })
-      .catch((error) => {
-        console.error(error)
-        return error
+      .catch((err) => {
+        console.error(err)
+        return err
       })
   },
   head() {

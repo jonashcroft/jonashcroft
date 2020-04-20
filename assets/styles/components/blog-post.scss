@@ -92,18 +92,11 @@ $fontWeightHeading: 800;
   a {
     color: $COLOR_SCREEN_BACKGROUND;
     position: relative;
-
-    &:after {
-      bottom: -0.5em;
-      content: '';
-      height: 2px;
-      left: 0;
-      position: absolute;
-      right: 0;
-      width: 100%;
-    }
+    font-weight: $fontWeightMid;
+    text-decoration: underline;
 
     &:hover {
+      text-decoration: none;
       // text-decoration: none;
     }
   }

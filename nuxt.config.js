@@ -1,6 +1,3 @@
-import { createClient } from '~/plugins/contentful.js'
-const cdaClient = createClient()
-
 export default {
   mode: 'universal',
   /*
@@ -56,8 +53,9 @@ export default {
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
-    '@nuxtjs/style-resources'[
-      ('@nuxtjs/sitemap',
+    '@nuxtjs/style-resources',
+    [
+      '@nuxtjs/sitemap',
       {
         hostname: 'https://ashcroft.dev',
         path: '/sitemap.xml',
@@ -74,7 +72,7 @@ export default {
             return route
           })
         }
-      })
+      }
     ]
   ],
   env: {
@@ -96,28 +94,7 @@ export default {
   axios: {},
 
   generate: {
-    fallback: true,
-    routes: () => {
-      return Promise.all([
-        cdaClient.getEntries({
-          limit: 400,
-          content_type: 'blogPost'
-        })
-      ]).then(([blogPosts]) => {
-        return [
-          // map blog blogPosts to URLs
-          ...blogPosts.items.map((blogPost) => {
-            const postDate = new Date(blogPost.fields.publishDate)
-              .toISOString()
-              .slice(0, 10)
-              .split('-')
-              .join('/')
-
-            return `/${postDate}/${blogPost.fields.slug}/`
-          })
-        ]
-      })
-    }
+    fallback: true
   },
 
   /*
