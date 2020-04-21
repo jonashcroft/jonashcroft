@@ -4,7 +4,6 @@
       :album-colours="albumColours"
       :page-data="pageData"
       :song-data="results"
-      :style="getStyleAttrs"
     />
   </div>
 </template>
@@ -76,18 +75,27 @@ export default {
             })
           }
 
-          if (this.results.colours.length === []) {
-            this.getStyleAttrs = ''
+          if (this.results.colours === []) {
             return
           }
 
+          const randomIndex = Math.floor(
+            Math.random() * this.results.colours.length
+          )
+
           this.albumColours = {
-            backgroundColor: this.results.colours[0].backgroundColor,
-            color: this.results.colours[0].color
+            backgroundColor: this.results.colours[randomIndex].backgroundColor,
+            color: this.results.colours[randomIndex].color
           }
 
-          this.getStyleAttrs = `--album-bg-colour: ${this.albumColours.backgroundColor};
-            --album-text-colour: ${this.albumColours.color};`
+          document.documentElement.style.setProperty(
+            '--album-bg-colour',
+            this.albumColours.backgroundColor
+          )
+          document.documentElement.style.setProperty(
+            '--album-text-colour',
+            this.albumColours.color
+          )
         })
     }
   }

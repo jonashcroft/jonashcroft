@@ -1,14 +1,8 @@
-$bodyFont: 'Inter', sans-serif;
-
-$fontWeightBody: 300;
-$fontWeightMid: 600;
-$fontWeightHeading: 800;
-
 .blog-post {
-  background: white;
+  background: $COLOR_WHITE;
   width: 80vw;
   padding: 3vw;
-  font-family: $bodyFont;
+  font-family: $FONT_BODY;
 
   @media only screen and (max-width: 768px) {
     width: 95vw;
@@ -16,10 +10,10 @@ $fontWeightHeading: 800;
 
   &__nav {
     a {
-      font-weight: $fontWeightMid;
+      font-weight: $WEIGHT_FONT_MID;
       line-height: 1.2;
       font-size: remFont(22);
-      color: #0d1016;
+      color: $COLOR_BLOG_NAV_LINK;
       text-decoration: none;
     }
     
@@ -37,11 +31,11 @@ $fontWeightHeading: 800;
     }
 
     h1 {
-      font-family: $bodyFont;
+      font-family: $FONT_BODY;
       font-size: remFont(36);
-      font-weight: $fontWeightHeading;
+      font-weight: $WEIGHT_FONT_HEADING;
       line-height: 1.2;
-      color: #0d1016;
+      color: $COLOR_BLOG_TITLE_TEXT;
       margin: 0 0 1vh 0;
 
       @media only screen and (max-width: 768px) {
@@ -51,30 +45,32 @@ $fontWeightHeading: 800;
 
     time {
       font-size: remFont(14);
-      color: #718096;
+      color: $COLOR_BLOG_TIME_TEXT;
     }
+  }
+
+  &__featured-image {
+    width: 75vw;
+    max-width: 620px;
+    margin: 0 auto 5vh auto;
   }
 
   &__article {
     width: 70vw;
     max-width: 580px;
-    margin: 0 auto;
-    font-family: $bodyFont;
-    font-weight: $fontWeightBody;
+    margin: 0 auto 5vh auto;
+    font-family: $FONT_BODY;
+    font-weight: $WEIGHT_FONT_BODY;
     line-height: 1.8;
-    color: #121212;
+    color: $COLOR_BLOG_BODY_TEXT;
 
     @media only screen and (max-width: 768px) {
       width: 85vw;
     }
-
-    $HEADING_BASE_FONT_SIZE: 18;
-    $HEADING_BASE_FONT_SIZE_MOBILE: 14;
-    $HEADING_SCALE: 3; // amount of px headings grow from h6 to h1
     
     @for $i from 1 through 6 {
       h#{$i} {
-        font-family: $bodyFont;
+        font-family: $FONT_BODY;
         line-height: 1.2;
         font-size: remFont($HEADING_BASE_FONT_SIZE + $HEADING_SCALE * (6 - $i));
 
@@ -92,12 +88,11 @@ $fontWeightHeading: 800;
   a {
     color: $COLOR_SCREEN_BACKGROUND;
     position: relative;
-    font-weight: $fontWeightMid;
+    font-weight: $WEIGHT_FONT_MID;
     text-decoration: underline;
 
     &:hover {
       text-decoration: none;
-      // text-decoration: none;
     }
   }
 

@@ -4,11 +4,10 @@
       <div class="tv-screen__init">AV-1</div>
 
       <header class="tv-screen__intro">
-        <h1
-          class="tv-screen__glitch-text tv-screen__intro-heading"
-          tabindex="0"
-        >
-          <nuxt-link to="/">Jon Ashcroft</nuxt-link>
+        <h1 class="tv-screen__intro-heading" tabindex="0">
+          <nuxt-link to="/" class="vcr__glitch-text" title="Go to homepage"
+            >Jon Ashcroft</nuxt-link
+          >
         </h1>
       </header>
 

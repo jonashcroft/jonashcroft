@@ -1,9 +1,12 @@
 <template>
   <li>
     <h2>
-      <nuxt-link :to="`/blog/${post.fields.slug}`">{{
-        post.fields.postTitle
-      }}</nuxt-link>
+      <nuxt-link
+        :to="`/blog/${post.fields.slug}`"
+        class="vcr__glitch-text"
+        :title="`Read '${post.fields.postTitle}'.`"
+        >{{ post.fields.postTitle }}</nuxt-link
+      >
     </h2>
     <time
       :title="post.fields.publishDate"

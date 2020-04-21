@@ -1,11 +1,31 @@
-// px to em conversion
+$FONT_BODY: 'Inter', sans-serif;
+
 $SIZE_BODY_DEFAULT: 16;
+
+$WEIGHT_FONT_BODY: 300;
+$WEIGHT_FONT_MID: 600;
+$WEIGHT_FONT_HEADING: 800;
+
+$HEADING_BASE_FONT_SIZE: 18;
+$HEADING_BASE_FONT_SIZE_MOBILE: 14;
+$HEADING_SCALE: 3; // amount of px headings grow from h6 to h1
+
 $COLOR_BLACK: #000000;
 $COLOR_WHITE: #FFFFFF;
 $COLOR_SCREEN_BACKGROUND: #0127f8;
 $COLOR_SCREEN_LINK_HIGHLIGHT: #EA3EE3;
 
-@function remFont($size) {
-  $remSize: $size / #{$SIZE_BODY_DEFAULT};
-  @return #{$remSize}rem;
+$COLOR_BLOG_TITLE_TEXT: #121212;
+$COLOR_BLOG_BODY_TEXT: #121212;
+$COLOR_BLOG_TIME_TEXT: #718096;
+$COLOR_BLOG_NAV_LINK: #718096;
+
+@function remFont($SIZE) {
+  $REM_SIZE: $SIZE / #{$SIZE_BODY_DEFAULT};
+  @return #{$REM_SIZE}rem;
+}
+
+:root {
+  --album-bg-colour: #{$COLOR_SCREEN_BACKGROUND};
+  --album-text-colour: #{$COLOR_WHITE};
 }
