@@ -2,7 +2,7 @@
   <li>
     <h2>
       <nuxt-link
-        :to="`/blog/${post.fields.slug}`"
+        :to="`/blog/${post.fields.slug}/`"
         class="vcr__glitch-text"
         :title="`Read '${post.fields.postTitle}'.`"
         >{{ post.fields.postTitle }}</nuxt-link
