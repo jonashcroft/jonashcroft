@@ -67,7 +67,7 @@ export default {
         {
           name: 'description',
           hid: 'description',
-          content: this.post.fields.seoMetaDescription
+          content: this.post.fields.content.substring(0, 160)
         },
         // Open Graph
         {
@@ -78,7 +78,7 @@ export default {
         {
           hid: 'og:description',
           name: 'og:description',
-          content: this.post.fields.seoMetaDescription
+          content: this.post.fields.content.substring(0, 160)
         },
         { hid: 'og:type', name: 'og:type', content: 'website' },
         { hid: 'og:locale', name: 'og:locale', content: 'en-GB' },
@@ -95,7 +95,9 @@ export default {
         {
           hid: 'twitter:description',
           name: 'twitter:description',
-          content: this.post.fields.seoMetaDescription
+          content:
+            this.post.fields.seoMetaDescription ||
+            this.post.fields.content.substring(0, 160)
         },
         {
           hid: 'twitter:image',

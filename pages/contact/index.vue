@@ -101,7 +101,7 @@ export default {
   },
   head() {
     return {
-      title: 'About - Jon Ashcroft',
+      title: 'Contact - Jon Ashcroft',
       meta: [
         {
           name: 'description',
@@ -112,7 +112,7 @@ export default {
         {
           hid: 'og:title',
           name: 'og:title',
-          content: 'About - Jon Ashcroft'
+          content: 'Contact - Jon Ashcroft'
         },
         {
           hid: 'og:description',

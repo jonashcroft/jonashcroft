@@ -106,21 +106,18 @@ export default {
   },
   head() {
     return {
+      title: 'Jon Ashcroft',
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content:
-            this.pageData.fields.seoMetaDescription ||
-            this.pageData.fields.content.substring(0, 160),
+          content: '',
           'og:locale': 'en-GB',
           'og:type': 'website',
           'og:url': `https://ashcroft.dev`,
           'og:site_name': 'Jon Ashcroft',
           'og:title': 'Home',
-          'og:description':
-            this.pageData.fields.seoMetaDescription ||
-            this.pageData.fields.content.substring(0, 160)
+          'og:description': ''
         }
       ]
     }

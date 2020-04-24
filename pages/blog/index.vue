@@ -106,6 +106,29 @@ export default {
           )
         })
     }
+  },
+  head() {
+    return {
+      title: 'Blog - Jon Ashcroft',
+      meta: [
+        {
+          name: 'description',
+          hid: 'description',
+          content: ''
+        },
+        // Open Graph
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: 'Blog - Jon Ashcroft'
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: ''
+        }
+      ]
+    }
   }
 }
 </script>
