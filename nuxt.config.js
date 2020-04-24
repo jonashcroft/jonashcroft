@@ -1,3 +1,13 @@
+import dotenv from 'dotenv'
+
+import * as contentful from 'contentful'
+
+dotenv.config()
+const client = contentful.createClient({
+  space: process.env.CTF_SPACE_ID,
+  accessToken: process.env.CTF_CDA_ACCESS_TOKEN
+})
+
 export default {
   mode: 'universal',
   /*
@@ -105,7 +115,18 @@ export default {
   axios: {},
 
   generate: {
-    fallback: true
+    fallback: true,
+    routes() {
+      return Promise.all([
+        client.getEntries({
+          content_type: 'blogPost'
+        })
+      ]).then(([blogEntries]) => {
+        return [
+          ...blogEntries.items.map((entry) => `/blog/${entry.fields.slug}`)
+        ]
+      })
+    }
   },
 
   /*

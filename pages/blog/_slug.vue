@@ -38,9 +38,10 @@ export default {
   },
   methods: {
     getMarkupImage(post) {
-      return post.fields.featuredImage
-        ? `${post.fields.featuredImage.fields.file.url}?w=620&q=96&fl=progressive`
-        : ''
+      if (post.fields.featuredImage) {
+        return `https://${post.fields.featuredImage.fields.file.url}?w=640&q=96&fl=progressive`
+      }
+      return ''
     },
     getMarkupDate(post, type) {
       let baseDate = post.fields.publishDate
@@ -66,9 +67,7 @@ export default {
         {
           name: 'description',
           hid: 'description',
-          content:
-            this.post.fields.seoMetaDescription ||
-            this.post.fields.content.substring(0, 160)
+          content: this.post.fields.seoMetaDescription
         },
         // Open Graph
         {
@@ -79,9 +78,7 @@ export default {
         {
           hid: 'og:description',
           name: 'og:description',
-          content:
-            this.post.fields.seoMetaDescription ||
-            this.post.fields.content.substring(0, 160)
+          content: this.post.fields.seoMetaDescription
         },
         { hid: 'og:type', name: 'og:type', content: 'website' },
         { hid: 'og:locale', name: 'og:locale', content: 'en-GB' },
@@ -98,21 +95,17 @@ export default {
         {
           hid: 'twitter:description',
           name: 'twitter:description',
-          content:
-            this.post.fields.seoMetaDescription ||
-            this.post.fields.content.substring(0, 160)
+          content: this.post.fields.seoMetaDescription
         },
         {
           hid: 'twitter:image',
           name: 'twitter:image',
-          content:
-            `https://${this.post.fields.featuredImage.fields.file.url}?w=640&q=96&fl=progressive` ||
-            ''
+          content: this.getMarkupImage(this.post)
         },
         {
           hid: 'twitter:image:alt',
           name: 'twitter:image:alt',
-          content: 'Jon Ashcroft'
+          content: `${this.post.fields.postTitle}`
         }
       ],
       __dangerouslyDisableSanitizers: ['script'],
