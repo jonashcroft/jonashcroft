@@ -79,13 +79,13 @@ export default {
         '@type': 'BreadcrumbList',
         itemListElement: [
           {
-            '@type': 'ListItem',
+            '@type': 'Thing',
             position: 1,
             name: 'Jon Ashcroft',
             item: 'https://ashcroft.dev'
           },
           {
-            '@type': 'ListItem',
+            '@type': 'Thing',
             position: 2,
             name: 'jon',
             item: `https://ashcroft.dev/${this.pageData.pageTitle}`

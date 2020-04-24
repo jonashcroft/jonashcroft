@@ -4,7 +4,7 @@ export default {
    ** Headers of the page
    */
   head: {
-    title: process.env.npm_package_name || '',
+    title: `Jon Ashcroft - %s`,
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -20,6 +20,14 @@ export default {
    ** Customize the progress-bar color
    */
   loading: { color: '#fff' },
+
+  env: {
+    LASTFM_API_KEY: process.env.LASTFM_API_KEY || '',
+    LASTFM_USERNAME: process.env.LASTFM_USERNAME || '',
+    CTF_SPACE_ID: process.env.CTF_SPACE_ID || '',
+    CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN || '',
+    GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID || ''
+  },
 
   /*
    ** Global CSS
@@ -40,7 +48,7 @@ export default {
     [
       '@nuxtjs/google-analytics',
       {
-        id: 'UA-57916704-1'
+        id: process.env.GOOGLE_ANALYTICS_ID
       }
     ]
   ],
@@ -74,12 +82,6 @@ export default {
       }
     ]
   ],
-  env: {
-    LASTFM_API_KEY: process.env.LASTFM_API_KEY || '',
-    LASTFM_USERNAME: process.env.LASTFM_USERNAME || '',
-    CTF_SPACE_ID: process.env.CTF_SPACE_ID || '',
-    CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN || ''
-  },
   styleResources: {
     scss: [
       'assets/styles/global/_config.scss',
