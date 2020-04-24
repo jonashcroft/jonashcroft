@@ -72,6 +72,28 @@ export default {
       }
     }
   },
+  data() {
+    return {
+      structuredData: {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Jon Ashcroft',
+            item: 'https://ashcroft.dev'
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'jon',
+            item: `https://ashcroft.dev/${this.pageData.pageTitle}`
+          }
+        ]
+      }
+    }
+  },
   computed: {
     getVcrColours() {
       return this.albumColours
@@ -85,6 +107,17 @@ export default {
       this.albumColours = colours
     },
     getNowPlaying() {}
+  },
+  head() {
+    return {
+      __dangerouslyDisableSanitizers: ['script'],
+      script: [
+        {
+          innerHTML: JSON.stringify(this.structuredData),
+          type: 'application/ld+json'
+        }
+      ]
+    }
   }
 }
 </script>

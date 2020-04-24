@@ -111,6 +111,56 @@ export default {
   },
   head() {
     return {
+      title: `${this.post.fields.postTitle} - Jon Ashcroft`,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            this.post.fields.seoMetaDescription ||
+            this.post.fields.description.substring(0, 160),
+          'og:locale': 'en-GB',
+          'og:type': 'website',
+          'og:url': `https://ashcroft.dev/blog/${this.post.fields.slug}`,
+          'og:site_name': 'Jon Ashcroft',
+          'og:title': this.post.fields.postTitle,
+          'og:description':
+            this.post.fields.seoMetaDescription ||
+            this.post.fields.description.substring(0, 160)
+        },
+        {
+          hid: 'twitter:card',
+          name: 'twitter:card',
+          content: 'summary_large_image'
+        },
+        {
+          hid: 'twitter:site',
+          name: 'twitter:site',
+          content: '@jonsnofun'
+        },
+        {
+          hid: 'twitter:creator',
+          name: 'twitter:creator',
+          content: '@jonsnofun'
+        },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: this.post.fields.title
+        },
+        {
+          hid: 'twitter:description',
+          name: 'twitter:description',
+          content:
+            this.post.fields.seoMetaDescription ||
+            this.post.fields.description.substring(0, 160)
+        },
+        {
+          hid: 'twitter:image',
+          name: 'twitter:image',
+          content: this.post.fields.featuredImage.fields.file.url || ''
+        }
+      ],
       __dangerouslyDisableSanitizers: ['script'],
       script: [
         {
