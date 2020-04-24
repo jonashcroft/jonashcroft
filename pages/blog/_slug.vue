@@ -61,42 +61,39 @@ export default {
             'https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&display=swap'
         }
       ],
-      title: `${this.post.fields.postTitle} - Jon Ashcroft`,
+      title: this.post.fields.postTitle,
       meta: [
         {
-          hid: 'description',
           name: 'description',
+          hid: 'description',
           content:
-            this.post.fields.seoMetaDescription ||
-            this.post.fields.content.substring(0, 160),
-          'og:locale': 'en-GB',
-          'og:type': 'website',
-          'og:url': `https://ashcroft.dev/blog/${this.post.fields.slug}`,
-          'og:site_name': 'Jon Ashcroft',
-          'og:title': this.post.fields.postTitle,
-          'og:description':
             this.post.fields.seoMetaDescription ||
             this.post.fields.content.substring(0, 160)
         },
+        // Open Graph
         {
-          hid: 'twitter:card',
-          name: 'twitter:card',
-          content: 'summary_large_image'
+          hid: 'og:title',
+          name: 'og:title',
+          content: this.post.fields.postTitle
         },
         {
-          hid: 'twitter:site',
-          name: 'twitter:site',
-          content: '@jonsnofun'
+          hid: 'og:description',
+          name: 'og:description',
+          content:
+            this.post.fields.seoMetaDescription ||
+            this.post.fields.content.substring(0, 160)
         },
-        {
-          hid: 'twitter:creator',
-          name: 'twitter:creator',
-          content: '@jonsnofun'
-        },
+        { hid: 'og:type', name: 'og:type', content: 'website' },
+        { hid: 'og:locale', name: 'og:locale', content: 'en-GB' },
+        { hid: 'og:site_name', name: 'og:site_name', content: 'Jon Ashcroft' },
+        { hid: 'og:url', name: 'og:url', content: 'https://ashcroft.dev' },
+        // Twitter Card
+        { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
+        { hid: 'twitter:site', name: 'twitter:site', content: '@jonsnofun' },
         {
           hid: 'twitter:title',
           name: 'twitter:title',
-          content: this.post.fields.postTitle
+          content: `${this.post.fields.postTitle} - Jon Ashcroft`
         },
         {
           hid: 'twitter:description',
@@ -108,7 +105,14 @@ export default {
         {
           hid: 'twitter:image',
           name: 'twitter:image',
-          content: this.post.fields.featuredImage.fields.file.url || ''
+          content:
+            `${this.post.fields.featuredImage.fields.file.url}?w=640&q=96&fl=progressive` ||
+            ''
+        },
+        {
+          hid: 'twitter:image:alt',
+          name: 'twitter:image:alt',
+          content: 'Jon Ashcroft'
         }
       ],
       __dangerouslyDisableSanitizers: ['script'],

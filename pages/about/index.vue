@@ -101,21 +101,23 @@ export default {
   },
   head() {
     return {
+      title: 'About - Jon Ashcroft',
       meta: [
         {
-          hid: 'description',
           name: 'description',
-          content:
-            this.pageData.fields.seoMetaDescription ||
-            this.pageData.fields.content.substring(0, 160),
-          'og:locale': 'en-GB',
-          'og:type': 'website',
-          'og:url': `https://ashcroft.dev/about`,
-          'og:site_name': 'Jon Ashcroft',
-          'og:title': 'About',
-          'og:description':
-            this.pageData.fields.seoMetaDescription ||
-            this.pageData.fields.content.substring(0, 160)
+          hid: 'description',
+          content: ''
+        },
+        // Open Graph
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: 'About - Jon Ashcroft'
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: ''
         }
       ]
     }

@@ -87,8 +87,12 @@ export default {
           {
             '@type': 'Thing',
             position: 2,
-            name: this.pageData.pageTitle,
-            item: `https://ashcroft.dev/${this.pageData.slug}`
+            name: this.pageData.fields
+              ? this.pageData.fields.pageTitle
+              : 'Blog',
+            item: this.pageData.fields
+              ? `https://ashcroft.dev/${this.pageData.fields.slug}`
+              : 'https://ashcroft.dev/blog'
           }
         ]
       }
