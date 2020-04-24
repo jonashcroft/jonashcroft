@@ -106,7 +106,7 @@ export default {
           hid: 'twitter:image',
           name: 'twitter:image',
           content:
-            `${this.post.fields.featuredImage.fields.file.url}?w=640&q=96&fl=progressive` ||
+            `https://${this.post.fields.featuredImage.fields.file.url}?w=640&q=96&fl=progressive` ||
             ''
         },
         {
