@@ -39,7 +39,7 @@ export default {
   methods: {
     getMarkupImage(post) {
       if (post.fields.featuredImage) {
-        return `https://${post.fields.featuredImage.fields.file.url}?w=640&q=96&fl=progressive`
+        return `https:${post.fields.featuredImage.fields.file.url}?w=640&q=96&fl=progressive`
       }
       return ''
     },
