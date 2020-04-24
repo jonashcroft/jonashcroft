@@ -37,6 +37,7 @@ export default {
             trackName: response.data.recenttracks.track[0].name,
             trackArtist: response.data.recenttracks.track[0].artist['#text'],
             trackCover: response.data.recenttracks.track[0].image[0]['#text'],
+            trackUrl: response.data.recenttracks.track[0].url,
             nowPlaying:
               (response.data.recenttracks.track[0]['@attr'] !== undefined &&
                 response.data.recenttracks.track[0]['@attr'].nowplaying) ||
