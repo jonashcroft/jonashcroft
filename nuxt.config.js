@@ -12,6 +12,16 @@ export default {
         hid: 'description',
         name: 'description',
         content: process.env.npm_package_description || ''
+      },
+      {
+        hid: 'og:title',
+        property: 'og:title',
+        content: 'Jon Ashcroft'
+      },
+      {
+        hid: 'og:og:site_name',
+        property: 'og:og:site_name',
+        content: 'Jon Ashcroft'
       }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]

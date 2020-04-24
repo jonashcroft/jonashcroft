@@ -98,6 +98,27 @@ export default {
           )
         })
     }
+  },
+  head() {
+    return {
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            this.pageData.fields.seoMetaDescription ||
+            this.pageData.fields.content.substring(0, 160),
+          'og:locale': 'en-GB',
+          'og:type': 'website',
+          'og:url': `https://ashcroft.dev/about`,
+          'og:site_name': 'Jon Ashcroft',
+          'og:title': 'About',
+          'og:description':
+            this.pageData.fields.seoMetaDescription ||
+            this.pageData.fields.content.substring(0, 160)
+        }
+      ]
+    }
   }
 }
 </script>

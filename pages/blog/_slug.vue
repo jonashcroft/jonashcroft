@@ -119,7 +119,7 @@ export default {
             '@type': 'BlogPosting',
             mainEntityOfPage: {
               '@type': 'WebPage',
-              '@id': `https://ashcroft.dev/blog/${this.post.fields.postTitle.slug}`
+              '@id': `https://ashcroft.dev/blog/${this.post.fields.slug}`
             },
             headline: `${this.post.fields.postTitle}`,
             image: this.getMarkupImage(this.post),
