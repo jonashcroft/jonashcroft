@@ -96,7 +96,7 @@ export default {
         {
           hid: 'twitter:title',
           name: 'twitter:title',
-          content: this.post.fields.title
+          content: this.post.fields.postTitle
         },
         {
           hid: 'twitter:description',
