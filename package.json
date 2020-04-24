@@ -1,7 +1,7 @@
 {
   "name": "jonashcroft-vue",
   "version": "1.0.0",
-  "description": "My own personal website!",
+  "description": "The website of an e-commerce Web Developer.",
   "author": "Jon Ashcroft",
   "private": true,
   "scripts": {

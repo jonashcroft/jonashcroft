@@ -1,6 +1,6 @@
 <template>
   <div class="base">
-    <blogPost :post="postData" />
+    <blogPost :post="post" />
   </div>
 </template>
 
@@ -24,27 +24,8 @@ export default {
       .then(([post]) => {
         if (post.items && post.items.length) {
           return {
-            postData: post.items[0],
-            structuredData: {
-              '@context': 'https://schema.org',
-              '@type': 'BlogPosting',
-              mainEntityOfPage: {
-                '@type': 'WebPage',
-                '@id': `https://ashcroft.dev/blog/${post.items[0].fields.postTitle.slug}`
-              },
-              headline: `${post.items[0].fields.postTitle}`,
-              image: this.getMarkupImage(post.items[0]),
-              author: {
-                '@type': 'Person',
-                name: 'Jon Ashcroft'
-              },
-              publisher: {
-                '@type': 'Organization',
-                name: 'Jon Ashcroft'
-              },
-              datePublished: this.getMarkupDate(post.items[0]),
-              dateModified: this.getMarkupDate(post.items[0], 'modified')
-            }
+            post: post.items[0],
+            structuredData: {}
           }
         } else {
           return error({ statusCode: 404 })
@@ -87,7 +68,7 @@ export default {
           name: 'description',
           content:
             this.post.fields.seoMetaDescription ||
-            this.post.fields.description.substring(0, 160),
+            this.post.fields.content.substring(0, 160),
           'og:locale': 'en-GB',
           'og:type': 'website',
           'og:url': `https://ashcroft.dev/blog/${this.post.fields.slug}`,
@@ -95,7 +76,7 @@ export default {
           'og:title': this.post.fields.postTitle,
           'og:description':
             this.post.fields.seoMetaDescription ||
-            this.post.fields.description.substring(0, 160)
+            this.post.fields.content.substring(0, 160)
         },
         {
           hid: 'twitter:card',
@@ -122,7 +103,7 @@ export default {
           name: 'twitter:description',
           content:
             this.post.fields.seoMetaDescription ||
-            this.post.fields.description.substring(0, 160)
+            this.post.fields.content.substring(0, 160)
         },
         {
           hid: 'twitter:image',
@@ -133,7 +114,26 @@ export default {
       __dangerouslyDisableSanitizers: ['script'],
       script: [
         {
-          innerHTML: JSON.stringify(this.structuredData),
+          innerHTML: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BlogPosting',
+            mainEntityOfPage: {
+              '@type': 'WebPage',
+              '@id': `https://ashcroft.dev/blog/${this.post.fields.postTitle.slug}`
+            },
+            headline: `${this.post.fields.postTitle}`,
+            image: this.getMarkupImage(this.post),
+            author: {
+              '@type': 'Person',
+              name: 'Jon Ashcroft'
+            },
+            publisher: {
+              '@type': 'Organization',
+              name: 'Jon Ashcroft'
+            },
+            datePublished: this.getMarkupDate(this.post),
+            dateModified: this.getMarkupDate(this.post, 'modified')
+          }),
           type: 'application/ld+json'
         }
       ]
