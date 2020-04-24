@@ -123,7 +123,7 @@ export default {
         })
       ]).then(([blogEntries]) => {
         return [
-          ...blogEntries.items.map((entry) => `/blog/${entry.fields.slug}`)
+          ...blogEntries.items.map((entry) => `/blog/${entry.fields.slug}/`)
         ]
       })
     }
