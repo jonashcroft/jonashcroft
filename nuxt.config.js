@@ -89,7 +89,7 @@ export default {
         path: '/sitemap.xml',
         gzip: true,
         defaults: {
-          changefreq: 'weekly',
+          changefreq: 'daily',
           priority: 1,
           lastmod: new Date(),
           lastmodrealtime: true
