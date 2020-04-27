@@ -50,9 +50,10 @@
   }
 
   &__featured-image {
-    width: 75vw;
-    max-width: 620px;
     margin: 0 auto 5vh auto;
+    max-width: 620px;
+    text-align: center;
+    width: 75vw;
   }
 
   &__article {
