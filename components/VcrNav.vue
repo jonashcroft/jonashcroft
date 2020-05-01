@@ -29,6 +29,15 @@
       </li>
       <li class="nav-item">
         <a
+          href="https://www.twitter.com/jonsnofun/"
+          class="vcr__glitch-text"
+          target="_blank"
+        >
+          &gt; Twitter</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
           href="https://www.instagram.com/msfinster/"
           class="vcr__glitch-text"
           target="_blank"
