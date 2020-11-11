@@ -39,6 +39,7 @@ import 'prismjs/components/prism-liquid'
 import 'prismjs/components/prism-markdown'
 import 'prismjs/components/prism-markup-templating'
 import 'prismjs/components/prism-php'
+import 'prismjs/components/prism-ruby'
 import 'prismjs/components/prism-scss'
 
 export default {
