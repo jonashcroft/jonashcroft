@@ -1,0 +1,55 @@
+/**
+ * Component / Style: Footer
+ * -----------------------------------------------------------------------------
+ */
+.footer {
+  &__now-playing {
+    display: flex;
+    flex-flow: column nowrap;
+    outline: 1px solid red;
+    padding: 0;
+    margin: 0 auto;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+  }
+
+  &__now-playing-cover {
+    margin-bottom: var(--spacing-l);
+    max-height: 150px;
+    max-width: 150px;
+  }
+
+  &__now-playing-details {
+    text-transform: uppercase;
+  }
+
+  &__now-playing-state {
+    font-size: rem(16);
+  }
+
+  &__now-playing-artist {
+    // display: block;
+  }
+
+  &__now-playing-track {
+    font-size: rem(32);
+  }
+
+  span {
+    display: block;
+    position: relative;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    &__now-playing {
+      flex-flow: row nowrap;
+      text-align: left;
+    }
+
+    &__now-playing-cover {
+      margin-bottom: 0;
+      margin-right: var(--spacing-l);
+    }
+  }
+}

@@ -11,6 +11,14 @@
     url('~assets/fonts/VCR_OSD_MONO.woff') format('woff');
 }
 
+/**
+ * Function to use REM with px values.
+ */
+@function rem($SIZE) {
+  $REM_SIZE: $SIZE / 18px;
+  @return #{$REM_SIZE}rem;
+}
+
 :root {
   /**
    * Fonts.
@@ -42,4 +50,9 @@
    * Layers.
    */
   --layer-sticky: 10;
+
+  /**
+   * Dimensions.
+   */
+  --height-nav-bar: 100px;
 }
