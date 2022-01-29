@@ -1,0 +1,13 @@
+/**
+ * Style / Global: Typography
+ * -----------------------------------------------------------------------------
+ */
+body {
+  font-family: var(--font-vcr);
+  font-size: var(--font-size-base);
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
+}

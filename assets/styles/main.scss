@@ -1,0 +1,13 @@
+/**
+ * Styles: Main
+ * -----------------------------------------------------------------------------
+ * - Entryfile for all style imports.
+ */
+@import 'sanitize.css';
+@import 'sanitize.css/reduce-motion.css';
+@import 'sanitize.css/typography.css';
+
+@import './global/variables';
+@import './global/typography';
+
+@import './global/base';

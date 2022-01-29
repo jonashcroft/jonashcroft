@@ -1,0 +1,23 @@
+.nav {
+  position: fixed;
+  z-index: var(--layer-sticky);
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: var(--spacing-m);
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__list-item {
+  }
+
+  &__list-item-link {
+    text-transform: uppercase;
+    color: var(--color-white);
+    // padding: var(--spacing-m) 0;
+  }
+}

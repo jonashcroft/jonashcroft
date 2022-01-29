@@ -1,0 +1,45 @@
+/**
+ * Style / Global: Variables.
+ * -----------------------------------------------------------------------------
+ * - CSS variables.
+ */
+@font-face {
+  font-family: 'VCR OSD Mono';
+  font-style: normal;
+  font-weight: normal;
+  src: local('VCR OSD Mono'),
+    url('~assets/fonts/VCR_OSD_MONO.woff') format('woff');
+}
+
+:root {
+  /**
+   * Fonts.
+   */
+  --font-vcr: 'VCR OSD Mono';
+
+  /**
+   * Sizes.
+   */
+  --font-size-base: 18px;
+
+  /**
+   * Colours.
+   */
+  --color-background: #171717;
+  --color-white: #fff;
+  --color-link: #000;
+
+  /**
+   * Spacing.
+   */
+  --spacing-xs: 0.5rem;
+  --spacing-s: 0.75rem;
+  --spacing-m: 1rem;
+  --spacing-l: 1.5rem;
+  --spacing-xl: 2rem;
+
+  /**
+   * Layers.
+   */
+  --layer-sticky: 10;
+}

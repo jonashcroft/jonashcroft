@@ -1,58 +1,52 @@
 {
-  "name": "jonashcroft-vue",
+  "name": "jonashroft",
   "version": "1.0.0",
-  "description": "The website of an e-commerce Web Developer.",
-  "author": "Jon Ashcroft",
   "private": true,
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
+    "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
+    "lint:style": "stylelint \"**/*.{css,scss,sass,html,vue}\" --ignore-path .gitignore",
+    "lint:prettier": "prettier --check .",
+    "lint": "yarn lint:js && yarn lint:style && yarn lint:prettier",
+    "lintfix": "prettier --write --list-different . && yarn lint:js --fix && yarn lint:style --fix",
+    "prepare": "husky install"
   },
   "lint-staged": {
-    "*.{js,vue}": "yarn lint",
-    "*.{css,vue}": "stylelint"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "*.{js,vue}": "eslint --cache",
+    "*.{css,scss,sass,html,vue}": "stylelint",
+    "*.**": "prettier --check --ignore-unknown"
   },
   "dependencies": {
-    "@contentful/rich-text-html-renderer": "^13.4.0",
-    "@nuxtjs/axios": "^5.3.6",
-    "@nuxtjs/dotenv": "^1.4.1",
-    "@nuxtjs/pwa": "^3.0.0-0",
-    "@nuxtjs/sitemap": "^2.2.0",
-    "@nuxtjs/style-resources": "^1.0.0",
-    "contentful": "^7.14.0",
-    "core-js": "2",
-    "node-sass": "^4.13.1",
-    "node-vibrant": "^3.1.5",
-    "nuxt": "^2.0.0",
-    "sanitize-html": "^1.22.1",
-    "sass-loader": "^8.0.2"
+    "@nuxt/content": "^1.15.1",
+    "core-js": "^3.19.3",
+    "nuxt": "^2.15.8",
+    "sass": "^1.49.0",
+    "sass-loader": "10",
+    "vue": "^2.6.14",
+    "vue-server-renderer": "^2.6.14",
+    "vue-template-compiler": "^2.6.14",
+    "webpack": "^4.46.0"
   },
   "devDependencies": {
-    "@babel/runtime-corejs2": "^7.8.7",
-    "@nuxtjs/eslint-config": "^2.0.0",
-    "@nuxtjs/eslint-module": "^1.0.0",
-    "@nuxtjs/google-analytics": "^2.2.3",
-    "@nuxtjs/stylelint-module": "^3.1.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.1",
-    "eslint-loader": "^4.0.0",
-    "eslint-plugin-nuxt": ">=0.4.2",
-    "eslint-plugin-prettier": "^3.1.3",
-    "eslint-plugin-vue": "^6.2.2",
-    "husky": "^4.2.5",
-    "lint-staged": "^10.0.0",
-    "marked": "^0.8.2",
-    "prettier": "^1.19.1",
-    "stylelint": "^10.1.0",
-    "vue-prism": "^1.0.5"
+    "@babel/eslint-parser": "^7.16.3",
+    "@nuxtjs/eslint-config": "^8.0.0",
+    "@nuxtjs/eslint-module": "^3.0.2",
+    "@nuxtjs/stylelint-module": "^4.1.0",
+    "eslint": "^8.4.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-nuxt": "^3.1.0",
+    "eslint-plugin-vue": "^8.2.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.2",
+    "postcss-html": "^1.3.0",
+    "prettier": "^2.5.1",
+    "sanitize.css": "^13.0.0",
+    "stylelint": "^14.1.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-recommended-vue": "^1.1.0",
+    "stylelint-config-standard": "^24.0.0"
   }
 }
