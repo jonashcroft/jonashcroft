@@ -116,9 +116,14 @@ export default {
           name: 'og:description',
           content: this.post.content.substring(0, 160),
         },
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          content: this.urlMarkupImage,
+        },
         { hid: 'og:type', name: 'og:type', content: 'website' },
         { hid: 'og:locale', name: 'og:locale', content: 'en-GB' },
-        { hid: 'og:site_name', name: 'og:site_name', content: 'Jon Ashcroft' },
+        { hid: 'og:site_name', name: 'og:site_name', content: 'jon ashcroft' },
         { hid: 'og:url', name: 'og:url', content: 'https://ashcroft.dev' },
         // Twitter Card
         { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
@@ -133,11 +138,6 @@ export default {
           name: 'twitter:description',
           content:
             this.post.seo.description || this.post.content.substring(0, 160),
-        },
-        {
-          hid: 'twitter:image',
-          name: 'twitter:image',
-          content: this.urlMarkupImage,
         },
         {
           hid: 'twitter:image:alt',
