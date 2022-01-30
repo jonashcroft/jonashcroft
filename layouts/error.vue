@@ -25,7 +25,7 @@ export default {
     textErrorMessage() {
       let message = this.error.message
 
-      if (this.error.statusCode !== '404') {
+      if (this.error.statusCode !== 404) {
         message = `I've broken something`
       }
 

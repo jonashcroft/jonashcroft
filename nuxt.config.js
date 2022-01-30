@@ -77,6 +77,12 @@ export default {
     id: process.env.GOOGLE_ANALYTICS_ID,
   },
 
+  publicRuntimeConfig: {
+    googleAnalytics: {
+      id: process.env.GOOGLE_ANALYTICS_ID,
+    },
+  },
+
   env: {
     LASTFM_API_KEY: process.env.LASTFM_API_KEY || '',
     LASTFM_USERNAME: process.env.LASTFM_USERNAME || '',
