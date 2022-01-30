@@ -17,6 +17,12 @@ export default {
     },
   },
 
+  head() {
+    return {
+      title: 'error',
+    }
+  },
+
   computed: {
     /**
      * Compute an error message.

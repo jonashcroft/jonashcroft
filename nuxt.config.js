@@ -101,6 +101,7 @@ export default {
       lastmod: new Date(),
       lastmodrealtime: true,
     },
+    exclude: ['/static/**'],
     filter({ routes }) {
       return routes.map((route) => {
         return route
