@@ -77,10 +77,12 @@ export default {
     id: process.env.GOOGLE_ANALYTICS_ID,
   },
 
-  publicRuntimeConfig: {
-    googleAnalytics: {
-      id: process.env.GOOGLE_ANALYTICS_ID,
-    },
+  env: {
+    LASTFM_API_KEY: process.env.LASTFM_API_KEY || '',
+    LASTFM_USERNAME: process.env.LASTFM_USERNAME || '',
+    CTF_SPACE_ID: process.env.CTF_SPACE_ID || '',
+    CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN || '',
+    GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID || '',
   },
 
   sitemap: {
