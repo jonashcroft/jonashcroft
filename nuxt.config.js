@@ -1,5 +1,5 @@
 /**
- * Config: Nuxt.
+ * Config: Nuxt
  * -----------------------------------------------------------------------------
  */
 import * as contentful from 'contentful'
@@ -62,6 +62,7 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     '@nuxtjs/google-analytics',
+    '@nuxtjs/sitemap',
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     '@nuxtjs/dotenv',
@@ -101,7 +102,6 @@ export default {
       lastmod: new Date(),
       lastmodrealtime: true,
     },
-    exclude: ['/static/**'],
     filter({ routes }) {
       return routes.map((route) => {
         return route
