@@ -22,8 +22,12 @@ body {
 
 .container {
   margin: 0 auto;
-  max-width: 1024px;
+  max-width: 620px;
   padding-left: var(--spacing-m);
   padding-right: var(--spacing-m);
   position: relative;
+
+  &--wide {
+    max-width: 768px;
+  }
 }

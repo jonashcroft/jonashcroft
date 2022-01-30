@@ -5,14 +5,14 @@
 .nav {
   $parent: &;
 
-  z-index: var(--layer-sticky);
-  position: fixed;
-  top: 0;
-  left: 0;
-  padding: var(--spacing-m);
-  right: 0;
   display: flex;
   justify-content: space-between;
+  left: 0;
+  padding: var(--spacing-m);
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: var(--layer-sticky);
 
   &__list {
     list-style: none;

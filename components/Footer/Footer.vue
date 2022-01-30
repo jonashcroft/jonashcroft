@@ -6,12 +6,16 @@
         :srcset="getCoverSrcSet()"
         :src="track.cover.small"
         :alt="textNowPlayingCoverAlt"
+        loading="lazy"
       />
 
       <figcaption class="footer__now-playing-details">
         <span class="footer__now-playing-state" v-text="textNowPlayingState" />
         <span class="footer__now-playing-track" v-text="textNowPlayingTrack" />
-        <span class="footer__now-playing-artist" v-text="track.artist" />
+        <span
+          class="footer__now-playing-artist"
+          v-text="textNowPlayingArtist"
+        />
       </figcaption>
     </figure>
   </footer>
@@ -48,11 +52,11 @@ export default {
     },
 
     /**
-     * Compute a styled 'Now Playing' track title.
+     * Compute a styled 'Now Playing' track artist.
      * @return {String}
      */
-    textNowPlayingTrack() {
-      return `"${this.track.title}" by`
+    textNowPlayingArtist() {
+      return `by ${this.track.artist}`
     },
 
     /**
@@ -61,6 +65,14 @@ export default {
      */
     textNowPlayingState() {
       return this.track.nowPlaying ? 'Now Playing:' : 'Last played:'
+    },
+
+    /**
+     * Compute a styled 'Now Playing' track title.
+     * @return {String}
+     */
+    textNowPlayingTrack() {
+      return `"${this.track.title}"`
     },
   },
 
@@ -119,16 +131,22 @@ export default {
      */
     handleNowPlayingResponse(tracks) {
       this.track = tracks.map((track) => {
-        return {
+        const formatted = {
           artist: track.artist['#text'],
-          cover: {
-            small: track.image[0]['#text'],
-            large: track.image[3]['#text'],
-          },
           key: track.mbid,
           nowPlaying: Boolean(track['@attr']?.nowplaying),
           title: track.name,
+          cover: this.track.cover,
         }
+
+        if (track.image[0]['#text']) {
+          formatted.cover = {
+            small: track.image[0]['#text'],
+            large: track.image[3]['#text'],
+          }
+        }
+
+        return formatted
       })[0]
     },
   },

@@ -15,7 +15,6 @@ module.exports = {
     'prettier',
   ],
   plugins: [],
-  // add your custom rules here
   rules: {
     'babel/no-invalid-this': 0,
     'import/extensions': [
@@ -66,5 +65,11 @@ module.exports = {
       },
     ],
     'vue/padding-line-between-blocks': ['error'],
+    'vue/multi-word-component-names': [
+      'error',
+      {
+        ignores: ['default'],
+      },
+    ],
   },
 }

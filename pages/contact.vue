@@ -6,7 +6,7 @@
 
 <script>
 /**
- * Page: Home
+ * Page: Contact
  * -----------------------------------------------------------------------------
  */
 import { marked } from 'marked'
@@ -17,7 +17,7 @@ import { createClient } from '~/plugins/contentful'
 const contentful = createClient()
 
 export default {
-  name: 'HomePage',
+  name: 'ContactPage',
 
   /**
    * Async Data.
@@ -27,7 +27,7 @@ export default {
   async asyncData({ params, error }) {
     try {
       const response = await contentful.getEntries({
-        'fields.slug': 'index',
+        'fields.slug': 'contact',
         content_type: 'page',
         include: 1,
       })

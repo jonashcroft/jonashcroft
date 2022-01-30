@@ -11,24 +11,19 @@
     url('~assets/fonts/VCR_OSD_MONO.woff') format('woff');
 }
 
-/**
- * Function to use REM with px values.
- */
-@function rem($SIZE) {
-  $REM_SIZE: $SIZE / 18px;
-  @return #{$REM_SIZE}rem;
-}
-
 :root {
   /**
    * Fonts.
    */
-  --font-vcr: 'VCR OSD Mono';
+  --font-vcr: 'VCR OSD Mono', 'Courier New', mono;
 
   /**
    * Sizes.
    */
+  --font-size-extra-small: 12px;
+  --font-size-smaller: 14px;
   --font-size-base: 18px;
+  --font-size-larger: 20px;
 
   /**
    * Colours.

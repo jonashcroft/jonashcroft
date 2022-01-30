@@ -1,0 +1,23 @@
+/**
+ * Blog / Style: Post list
+ * -----------------------------------------------------------------------------
+ */
+.post-list {
+  list-style: none;
+  padding: 0;
+
+  &__item {
+    list-style: none;
+    margin-bottom: var(--spacing-l);
+    margin-left: 0;
+  }
+
+  &__item-link {
+  }
+
+  &__item-date {
+    position: relative;
+    display: block;
+    font-size: var(--font-size-smaller);
+  }
+}

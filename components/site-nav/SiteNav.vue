@@ -39,7 +39,7 @@
  */
 
 export default {
-  name: 'NavBar',
+  name: 'SiteNav',
 
   computed: {
     /**
@@ -96,5 +96,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import './nav-bar.scss';
+@import './site-nav.scss';
 </style>

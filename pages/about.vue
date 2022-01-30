@@ -6,18 +6,18 @@
 
 <script>
 /**
- * Page: Home
+ * Page: About
  * -----------------------------------------------------------------------------
  */
 import { marked } from 'marked'
 
-import { sanitize } from '~/plugins/sanitize-html'
 import { createClient } from '~/plugins/contentful'
+import { sanitize } from '~/plugins/sanitize-html'
 
 const contentful = createClient()
 
 export default {
-  name: 'HomePage',
+  name: 'AboutPage',
 
   /**
    * Async Data.
@@ -27,7 +27,7 @@ export default {
   async asyncData({ params, error }) {
     try {
       const response = await contentful.getEntries({
-        'fields.slug': 'index',
+        'fields.slug': 'about',
         content_type: 'page',
         include: 1,
       })

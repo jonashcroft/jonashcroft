@@ -1,0 +1,28 @@
+/**
+ * Style / Default: Main Content
+ * -----------------------------------------------------------------------------
+ * - Styles for the main content div on the default layout.
+ *
+ */
+.main-content:not(.article) {
+  margin-bottom: var(--spacing-xl);
+  padding-left: 0;
+  padding-right: 0;
+  padding: var(--spacing-xl) 0;
+  text-transform: uppercase;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-xl);
+    margin-top: 0;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+}
