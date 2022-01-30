@@ -32,7 +32,7 @@ export default {
   data() {
     return {
       track: {
-        artist: 'Artist',
+        artist: 'Artist Name',
         title: 'Track Title',
         cover: {
           small: '/now-playing-placeholder.png',

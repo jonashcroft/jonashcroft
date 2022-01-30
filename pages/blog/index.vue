@@ -24,9 +24,6 @@
  * Page: Blog
  * -----------------------------------------------------------------------------
  */
-// import { marked } from 'marked';
-
-// import { sanitize } from '~/plugins/sanitize-html'
 import { createClient } from '~/plugins/contentful'
 
 const contentful = createClient()
@@ -48,8 +45,6 @@ export default {
         order: '-fields.publishDate',
       })
 
-      window.console.dir({ response })
-
       const posts = response.items.map((item) => {
         return {
           date: item.fields.publishDate,
@@ -66,24 +61,10 @@ export default {
       error({ statusCode: 404, message: 'Page not found' })
     }
   },
-
-  computed: {
-    /**
-     * Compute the page content HTML for render.
-     * - Converts markdown
-     * - Returns clean HTML
-     * @return {String}
-     */
-    pageContent() {
-      return 'hi'
-      // const dirty = marked(this.page.content)
-      // return sanitize(dirty)
-    },
-  },
 }
 </script>
 
 <style lang="scss">
 @import './post-list.scss';
-@import '@/assets/default/main-content.scss';
+@import '~/assets/default/main-content.scss';
 </style>

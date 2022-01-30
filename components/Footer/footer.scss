@@ -3,6 +3,8 @@
  * -----------------------------------------------------------------------------
  */
 .footer {
+  margin-bottom: var(--spacing-2xl);
+
   &__now-playing {
     display: flex;
     flex-flow: column nowrap;

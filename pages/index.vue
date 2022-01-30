@@ -51,6 +51,29 @@ export default {
     }
   },
 
+  head() {
+    return {
+      title: 'jon ashcroft',
+      meta: [
+        {
+          name: 'description',
+          hid: 'description',
+          content: '',
+        },
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: 'jon ashcroft',
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: 'e-commerce web developer',
+        },
+      ],
+    }
+  },
+
   computed: {
     /**
      * Compute the page content HTML for render.
@@ -67,5 +90,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@/assets/default/main-content.scss';
+@import '~/assets/default/main-content.scss';
 </style>

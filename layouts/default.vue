@@ -11,8 +11,8 @@
  * Layout: Default
  * -----------------------------------------------------------------------------
  */
-import SiteFooter from '@/components/footer/Footer'
-import SiteNav from '@/components/site-nav/SiteNav'
+import SiteFooter from '~/components/footer/Footer'
+import SiteNav from '~/components/site-nav/SiteNav'
 
 export default {
   components: {

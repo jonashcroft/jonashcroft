@@ -1,27 +1,29 @@
 <template>
-  <main class="main-content">
-    <header class="main-content__header">
-      <h1 class="main-content__title" v-text="post.title" />
+  <article class="article container container--wide">
+    <header class="article__header">
+      <h1 class="article__title" v-text="post.title" />
 
       <time
+        class="article__date"
         :title="post.publishedAt"
         :datetime="post.publishedAt"
         v-text="articleDate"
       ></time>
 
       <img
-        class="main-content__featured-image"
+        v-if="post.image"
+        class="article__featured-image"
         :src="post.image.url"
         :alt="post.image.alt"
         loading="lazy"
       />
     </header>
 
-    <article
-      class="main-content__article article container container--wide"
+    <div
+      class="article__body container container--wide"
       v-html="articleContent"
     />
-  </main>
+  </article>
 </template>
 
 <script>
@@ -68,15 +70,17 @@ export default {
       const post = {
         content: data.fields.content,
         publishedAt: data.fields.publishDate,
+        updatedAt: data.sys.updatedAt,
         slug: data.fields.slug,
         tags: data.metadata.tags,
         title: data.fields.postTitle,
+        seo: {
+          description: data.fields.seoMetaDescription,
+        },
       }
 
       if (data.fields?.featuredImage) {
         const img = data.fields.featuredImage
-
-        window.console.dir(img.fields)
 
         post.image = {
           alt: img.fields.description,
@@ -89,15 +93,92 @@ export default {
         post,
       }
     } catch (err) {
-      error({ statusCode: 404 })
+      error({ statusCode: 404, message: 'Page not found' })
     }
   },
+
   head() {
     return {
+      title: this.post.title,
+      meta: [
+        {
+          name: 'description',
+          hid: 'description',
+          content: this.post.content.substring(0, 160),
+        },
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: this.post.title,
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: this.post.content.substring(0, 160),
+        },
+        { hid: 'og:type', name: 'og:type', content: 'website' },
+        { hid: 'og:locale', name: 'og:locale', content: 'en-GB' },
+        { hid: 'og:site_name', name: 'og:site_name', content: 'Jon Ashcroft' },
+        { hid: 'og:url', name: 'og:url', content: 'https://ashcroft.dev' },
+        // Twitter Card
+        { hid: 'twitter:card', name: 'twitter:card', content: 'summary' },
+        { hid: 'twitter:site', name: 'twitter:site', content: '@jonsnofun' },
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          content: `${this.post.title} / jon ashcroft`,
+        },
+        {
+          hid: 'twitter:description',
+          name: 'twitter:description',
+          content:
+            this.post.seo.description || this.post.content.substring(0, 160),
+        },
+        {
+          hid: 'twitter:image',
+          name: 'twitter:image',
+          content: this.urlMarkupImage,
+        },
+        {
+          hid: 'twitter:image:alt',
+          name: 'twitter:image:alt',
+          content: `${this.post.title}`,
+        },
+      ],
       link: [
+        {
+          hid: 'canonical',
+          rel: 'canonical',
+          href: `https://ashcroft.dev/blog/${this.post.slug}/`,
+        },
         {
           rel: 'stylesheet',
           href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&display=swap',
+        },
+      ],
+      script: [
+        {
+          type: 'application/ld+json',
+          json: {
+            '@context': 'https://schema.org',
+            '@type': 'BlogPosting',
+            mainEntityOfPage: {
+              '@type': 'WebPage',
+              '@id': `https://ashcroft.dev/blog/${this.post.slug}`,
+            },
+            headline: this.post.title,
+            image: this.urlMarkupImage,
+            author: {
+              '@type': 'Person',
+              name: 'Jon Ashcroft',
+            },
+            publisher: {
+              '@type': 'Organization',
+              name: 'Jon Ashcroft',
+            },
+            datePublished: this.articleSchemaDate,
+            dateModified: this.articleSchemaModifiedDate,
+          },
         },
       ],
     }
@@ -129,6 +210,37 @@ export default {
         day: 'numeric',
       })
     },
+
+    /**
+     * Compute the publish date for JSON+LD
+     * @returns {String}
+     */
+    articleSchemaDate() {
+      return new Date(this.post.publishedAt)
+        .toLocaleDateString('en-GB')
+        .split('T')[0]
+    },
+
+    /**
+     * Compute the modified date for JSON+LD
+     * @returns {String}
+     */
+    articleSchemaModifiedDate() {
+      return new Date(this.post.updatedAt)
+        .toLocaleDateString('en-GB')
+        .split('T')[0]
+    },
+
+    /**
+     * Compute a URL for the featured image, used on social media.
+     * @returns {String}
+     */
+    urlMarkupImage() {
+      if (this.post.image) {
+        return `https:${this.post.image.url}?w=640&q=96&fl=progressive`
+      }
+      return ''
+    },
   },
 
   mounted() {
@@ -140,5 +252,4 @@ export default {
 <style lang="scss">
 @import './styles/article.scss';
 @import './styles/prism.scss';
-@import '@/assets/default/main-content.scss';
 </style>

@@ -4,10 +4,8 @@
  * - Styles for the main content div on the default layout.
  *
  */
-.main-content:not(.article) {
-  margin-bottom: var(--spacing-xl);
-  padding-left: 0;
-  padding-right: 0;
+.main-content {
+  margin-bottom: var(--spacing-2xl);
   padding: var(--spacing-xl) 0;
   text-transform: uppercase;
 
