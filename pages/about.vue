@@ -53,7 +53,7 @@ export default {
 
   head() {
     return {
-      title: 'about',
+      title: 'about / jon ashcroft',
       meta: [
         {
           name: 'description',
